@@ -3,9 +3,21 @@ body {
 }
 
 .text-grey-l {
-  color: #838383;
+  color: #343434;
+}
+
+.text-copper {
+  color: #B9884F;
 }
 
 .bg-copper {
   background-color: #B9884F;
+}
+
+.border-copper {
+  border-color: #B9884F;
+}
+
+.bg-grey {
+  background-color: #1A1A1A;
 }
