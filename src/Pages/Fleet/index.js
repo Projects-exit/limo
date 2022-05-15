@@ -2,6 +2,7 @@ import React,{useEffect} from 'react'
 
 import Navbar from 'Pages/Navbar'
 import Footer from 'Pages/Footer'
+import { EntryScreen, ChangeScreen } from 'Components/SplashScreens'
 
 import ReserveCard from './ReserveCard'
 import ChooseCar from './ChooseCar'
@@ -18,6 +19,8 @@ export default function Index(props) {
     }, [])
     return (
         <>
+            <EntryScreen />
+            <ChangeScreen />
             <Navbar />
             <ReserveCard />
             <ChooseCar />

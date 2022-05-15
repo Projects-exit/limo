@@ -9,7 +9,7 @@ export default function Footer(props) {
     
     const _about = [
         {
-            link : '/',
+            link : '/#drivers',
             label : "Our drivers"
         },
         {
@@ -59,7 +59,9 @@ export default function Footer(props) {
                                 }
                             </div>
                         <div className='pt-8 lg:pt-0'>
+                            <Link to="/reservation">
                             <ButtonFilled label="RESERVE NOW" className="ml-auto mr-auto lg:mr-0 w-fit text-sm" />
+                            </Link>
                         </div>
                         </div>
                     </div>

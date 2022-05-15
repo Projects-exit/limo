@@ -5,6 +5,7 @@ import {ReactComponent as Ripple} from 'Assets/Bg/ripple.svg'
 
 import { QualityDetails } from './QualityDetails';
 
+import { SlideTop, SlideBottom, SlideLeft, SlideRight, JustAppear } from 'Components/SlideAnimation'
 
 export default function Quality(props) {
 
@@ -13,7 +14,7 @@ export default function Quality(props) {
         <>
             <div className="w-full bg-black   ">
                 <div className="">
-                    <div className="relative h-[950px] lg:h-[800px] ">
+                    <div className="relative h-[1050px] lg:h-[800px] ">
                         
                         <div className="absolute w-full   z-20 ">
                             <div className="container  mx-auto  mt-12">
@@ -25,12 +26,19 @@ export default function Quality(props) {
                                 <div className="w-full lg:w-8/12">
                                     <div className="p-[30px] text-left">
                                         <div className="pb-4 text-copper font-bold">
-                                            Some of our keys
+                                            <SlideLeft>
+                                                Some of our keys
+                                            </SlideLeft>
                                         </div>
                                         <div className="text-3xl text-white font-bold pb-12">
-                                            Quality services
+                                            <SlideLeft>
+                                                Quality services
+                                            </SlideLeft>
                                         </div>
+                                        <JustAppear>
+
                                         <QualityDetails />
+                                        </JustAppear>
                                     </div>
                                 </div>
                             </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import {ReactComponent as Ripple} from 'Assets/Bg/ripple.svg'
+import { SlideTop, SlideBottom, SlideLeft, SlideRight, JustAppear } from 'Components/SlideAnimation'
 
 import orange from 'Assets/Places/orange.png'
 import LasVegas from 'Assets/Places/LasVegas.png'
@@ -54,12 +55,16 @@ export default function OurLocation(props) {
         </div>
         <div className='bg-black py-24 '>
             <div className="text-3xl text-white text-center font-bold">
+                <SlideTop>
+
                 Our locations
+                </SlideTop>
             </div>
             <div className="py-20 container mx-auto">
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-16">
                     {_locations.map(item => <div key={item.title} className={`relative ${item.className} overflow-hidden rounded-3xl min-h-[250px]`}>
                         <div className="absolute w-full h-full  bg-black-grad"></div>
+                        <JustAppear>
                         <div 
                             style={{
                                 backgroundImage:`url(${item?.image})`,
@@ -68,6 +73,7 @@ export default function OurLocation(props) {
                             }}
                             className="absolute w-full h-full  "> </div>
                         <div className="absolute bottom-0 pl-5 pb-5 text-2xl font-bold text-white"> {item.title} </div>
+                        </JustAppear>
                         {/* <img src={item?.image} className="w-full h-full" alt="" /> */}
                     </div>)}
                 </div>

@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import { ButtonFilled } from 'Components/Button';
 import { CardGrey } from 'Components/Cards';
 import { CarDetail } from './CarDetail';
@@ -26,7 +28,9 @@ export const CarCard = (props) => {
             <div className="flex flex-wrap justify-between items-center pt-16 lg:pt-0">
                 <CarDetail seat={item?.seat} luggage={item?.luggage} />
                 <div className='w-full lg:w-fit pt-6 lg:pt-0'>
-                    <ButtonFilled label="RESERVE NOW" className="text-center text-sm" />
+                    <Link to="/reservation">
+                        <ButtonFilled label="RESERVE NOW" className="text-center text-sm" />
+                    </Link>
                 </div>
             </div>
         

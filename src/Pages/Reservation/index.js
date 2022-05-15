@@ -1,5 +1,6 @@
 import React,{useEffect} from 'react'
 import Payment from './Payment'
+import { EntryScreen, ChangeScreen } from 'Components/SplashScreens'
 
 import Navbar from 'Pages/Navbar'
 import Footer from 'Pages/Footer'
@@ -16,6 +17,8 @@ export default function Index(props) {
     }, [])
     return (
         <>
+        <EntryScreen/>
+        <ChangeScreen />
         <Navbar />
         <Payment/>
         <Footer />

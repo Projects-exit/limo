@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
+import { SlideTop, SlideBottom, SlideLeft, SlideRight } from 'Components/SlideAnimation'
+
 // import { _carsList, variants, swipePower, swipeConfidenceThreshold } from './OurFleet';
 
 import ellipseBg from 'Assets/Bg/Ellipse.png'
@@ -12,6 +14,7 @@ import { ReactComponent as PersonIcon } from 'Assets/Misc/personIcon.svg'
 import { PageBubble } from './PageBubble';
 import { ButtonFilled } from 'Components/Button';
 import { _carsList } from '../../_carsList';
+import { Link } from 'react-router-dom';
 
 export const variants = {
     enter: (direction) => {
@@ -70,10 +73,14 @@ export const CarCarousal = (prosp) => {
                         <Tshape className='mx-auto' />
                     </div>
                     <div className="text-center py-2 text-2xl text-white font-bold">
+                        <SlideTop>
                         {_carsList[imageIndex(page)]?.title}
+                        </SlideTop>
                     </div>
                     <div className="text-center py-2 text-xl text-white font-bold text-copper">
+                    <SlideBottom>
                         {_carsList[imageIndex(page)]?.sub}
+                    </SlideBottom>
                     </div>
                 </div>
                 <div className='flex justify-between items-center  w-full  overflow-x-hidden h-96  '>
@@ -122,6 +129,7 @@ export const CarCarousal = (prosp) => {
 
                 <PageBubble page={page} imageIndex={imageIndex} />
                 <div className="flex justify-center mt-12 items-center text-2xl">
+                    <SlideLeft>
                     <div className='mx-4 flex items-center'>
                         <div className="bg-grey rounded-full h-9 w-9 flex items-center justify-center">
                             <PersonIcon height={15} width={15} />
@@ -130,6 +138,8 @@ export const CarCarousal = (prosp) => {
                             {_carsList[imageIndex(page)]?.seat}
                         </div>
                     </div>
+                    </SlideLeft>
+                    <SlideRight>
                     <div className='mx-4 flex items-center'>
                         <div className="bg-grey rounded-full  h-9 w-9 flex items-center justify-center">
                             <BagIcon height={23} width={23} />
@@ -138,9 +148,15 @@ export const CarCarousal = (prosp) => {
                             {_carsList[imageIndex(page)]?.luggage}
                         </div>
                     </div>
+                    </SlideRight>
                 </div>
                 <div className="pt-12 text-center">
+                    <SlideTop>
+
+                    <Link to="/reservation">
                     <ButtonFilled label="RESERVE NOW" className="w-fit mx-auto text-sm" />
+                    </Link>
+                    </SlideTop>
                 </div>
             </div>
         </>

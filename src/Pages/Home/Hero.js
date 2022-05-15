@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 // ** assets
 import carImage from 'Assets/Bg/hero_car.png'
@@ -7,7 +8,7 @@ import { ReactComponent as Ripple } from 'Assets/Bg/ripple.svg'
 import { Button } from 'Components/Button'
 
 // **animations
-import { SlideTop, SlideBottom, SlideLeft, SlideRight } from 'Components/SlideAnimation'
+import { SlideTop, SlideBottom, SlideLeft, SlideRight, JustAppear } from 'Components/SlideAnimation'
 
 export default function Hero(props) {
 
@@ -23,7 +24,12 @@ export default function Hero(props) {
                 <div className=" mx-auto ">
                     <div className="relative">
                         <div className="text-center px-4">
-                            <Button label="Reserve Now" className="text-center px-14 mr-auto lg:mx-auto w-fit" />
+                            <JustAppear>
+
+                            <Link to="/reservation">
+                                <Button label="Reserve Now" className="text-center px-14 mr-auto lg:mx-auto w-fit" />
+                            </Link>
+                            </JustAppear>
                         </div>
                         <div className="px-4 py-2 text-grey-l text-4xl sm:text-7xl w-44 sm:w-full text-left sm:text-center  translate-y-10  sm:translate-y-14 uppercase font-bold  z-20">
                             <SlideLeft  >
@@ -55,7 +61,9 @@ export default function Hero(props) {
                             </div>
 
                             <div className="absolute w-full text-center">
+                                <JustAppear>
                                 <img src={carImage} alt="" className='z-10 w-full  max-w-7xl mx-auto' />
+                                </JustAppear>
                             </div>
                         </div>
                         <div className="relative ">
