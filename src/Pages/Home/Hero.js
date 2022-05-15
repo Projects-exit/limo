@@ -2,58 +2,80 @@ import React from 'react'
 
 // ** assets
 import carImage from 'Assets/Bg/hero_car.png'
-import {ReactComponent as ScrollBar} from 'Assets/Misc/scroll.svg'
-import {ReactComponent as Ripple} from 'Assets/Bg/ripple.svg'
-import { Button } from '../../Components/Button'
+import { ReactComponent as ScrollBar } from 'Assets/Misc/scroll.svg'
+import { ReactComponent as Ripple } from 'Assets/Bg/ripple.svg'
+import { Button } from 'Components/Button'
+
+// **animations
+import { SlideTop, SlideBottom, SlideLeft, SlideRight } from 'Components/SlideAnimation'
 
 export default function Hero(props) {
-    
+
 
     return (
         <>
-        <div className="relative">
-            <div className="absolute flex justify-end w-full top-0 right-0">
-                <Ripple className='-translate-y-96  translate-x-64' />
+            <div className="relative">
+                <div className="absolute flex justify-end w-full top-0 right-0 overflow-hidden">
+                    <Ripple className='-translate-y-[360px] translate-x-[200px]   sm:translate-x-[310px]' />
+                </div>
             </div>
-        </div>
-        <div className="hero bg-black  pt-24   w-full bg-red-">
-            <div className=" mx-auto">
-                <div className="relative">
-                    <div className="text-center">
-                        <Button label="Reserve Now" className="text-center mx-auto w-fit" />
-                    </div>
-                <div className="py-2 text-grey-l text-3xl sm:text-6xl uppercase font-bold translate-y-14 z-20">
-                    Limousine service <br /> at Your doorstep
-                </div>
-                <div className="relative h-[300px] lg:h-[380px] xl:h-[450px] ">
-                        <div className="h-[0.5px] w-32 bg-copper absolute top-24"></div>
-                        <div className="h-[0.5px] w-64 bg-copper absolute top-32"></div>
-                   
-                        <div className="h-[0.5px] w-32 bg-copper absolute right-24 -top-8"></div>
-                        
-                        <div className="h-[0.5px] w-24 bg-copper absolute top-44 right-0"></div>
-                        <div className="h-[0.5px] w-44 bg-copper absolute top-52 right-0"></div>
+            <div className="hero bg-black  pt-44   w-full bg-red-">
+                <div className=" mx-auto ">
+                    <div className="relative">
+                        <div className="text-center px-4">
+                            <Button label="Reserve Now" className="text-center px-14 mr-auto lg:mx-auto w-fit" />
+                        </div>
+                        <div className="px-4 py-2 text-grey-l text-4xl sm:text-7xl w-44 sm:w-full text-left sm:text-center  translate-y-10  sm:translate-y-14 uppercase font-bold  z-20">
+                            <SlideLeft  >
+                                Limousine service
+                            </SlideLeft>
+                            <SlideRight >
+                                at Your doorstep
+                            </SlideRight>
+                        </div>
+                        <div className="relative h-[200px] lg:h-[380px] xl:h-[450px] ">
+                            <div className="hidden sm:block">
 
-                    <div className="absolute w-full text-center">
-                        <img src={carImage} alt="" className='z-10 w-full  max-w-7xl mx-auto' />
+                                <SlideRight>
+                                    <div className="h-[0.5px] w-32 bg-copper absolute top-24"></div>
+                                </SlideRight>
+                                <SlideLeft>
+                                    <div className="h-[0.5px] w-64 bg-copper absolute top-32"></div>
+                                </SlideLeft>
+                                <SlideLeft>
+                                    <div className="h-[0.5px] w-44 bg-copper absolute right-24 -top-8"></div>
+                                </SlideLeft>
+                                <SlideRight>
+                                    <div className="h-[0.5px] w-44 bg-copper absolute top-56 right-0"></div>
+                                </SlideRight>
+                                <SlideLeft>
+
+                                    <div className="h-[0.5px] w-24 bg-copper absolute top-64 right-0"></div>
+                                </SlideLeft>
+                            </div>
+
+                            <div className="absolute w-full text-center">
+                                <img src={carImage} alt="" className='z-10 w-full  max-w-7xl mx-auto' />
+                            </div>
+                        </div>
+                        <div className="relative ">
+                            <div className="absolute flex justify-center w-full  h-96 overflow-hidden">
+                                <Ripple className='-translate-y-44  translate-x-64' />
+                            </div>
+                            <SlideTop>
+                                <div className='hidden lg:flex justify-center absolute w-full -translate-y-14 items-center z-30 bg-transparent'>
+                                    <div className="h-[0.5px] w-44 bg-copper "></div>
+                                    <ScrollBar className='mx-8' />
+                                    <div className="h-[0.5px] w-44 bg-copper "></div>
+                                </div>
+                            </SlideTop>
+                        </div>
+
                     </div>
-                </div>
-                <div className="relative ">
-                    <div className="absolute flex justify-center w-full  h-96">
-                        <Ripple className='-translate-y-44  translate-x-64' />
-                    </div>
-                    <div className='hidden lg:flex justify-center absolute w-full -translate-y-14 items-center z-30 bg-transparent'>
-                        <div className="h-[0.5px] w-44 bg-copper "></div>
-                        <ScrollBar className='mx-8' />
-                        <div className="h-[0.5px] w-44 bg-copper "></div>
-                    </div>
-                </div>
 
                 </div>
-        
             </div>
-        </div>
-            
+
         </>
     )
 }
