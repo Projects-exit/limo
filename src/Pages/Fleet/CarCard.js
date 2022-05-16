@@ -1,13 +1,30 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, {useContext} from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { ButtonFilled } from 'Components/Button';
 import { CardGrey } from 'Components/Cards';
 import { CarDetail } from './CarDetail';
 
+import { Store } from 'Store/orderStore'
+
 export const CarCard = (props) => {
 
     const { item } = props;
+
+    const _store = useContext(Store)
+    
+
+    const navigate = useNavigate()
+
+    const updateCar = (car) => {
+        
+        _store.dispatch({
+            type: 'initOrder',
+            payload: {car : car}
+        })
+
+        navigate("/reservation")
+    }
 
     return (
         <CardGrey >
@@ -28,9 +45,11 @@ export const CarCard = (props) => {
             <div className="flex flex-wrap justify-between items-center pt-16 lg:pt-0">
                 <CarDetail seat={item?.seat} luggage={item?.luggage} />
                 <div className='w-full lg:w-fit pt-6 lg:pt-0'>
-                    <Link to="/reservation">
-                        <ButtonFilled label="RESERVE NOW" className="text-center text-sm" />
-                    </Link>
+                    {/* <Link to="/reservation"> */}
+                        <ButtonFilled 
+                            onClick={() => updateCar(item)}
+                            label="RESERVE NOW" className="text-center text-sm" />
+                    {/* </Link> */}
                 </div>
             </div>
         

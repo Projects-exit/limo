@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
 import { SlideTop, SlideBottom, SlideLeft, SlideRight } from 'Components/SlideAnimation'
@@ -14,7 +14,9 @@ import { ReactComponent as PersonIcon } from 'Assets/Misc/personIcon.svg'
 import { PageBubble } from './PageBubble';
 import { ButtonFilled } from 'Components/Button';
 import { _carsList } from '../../_carsList';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
+import { Store } from 'Store/orderStore'
 
 export const variants = {
     enter: (direction) => {
@@ -52,10 +54,24 @@ export const CarCarousal = (prosp) => {
     const [[page, direction], setPage] = useState([0, 0]);
     const imageIndex = (page) => wrap(0, _carsList.length, page);
 
+    const _store = useContext(Store)
+    const navigate = useNavigate()
+
+
     const paginate = (newDirection) => {
         setPage([page + newDirection, newDirection]);
     };
 
+
+    const updateCar = () => {
+
+        _store.dispatch({
+            type: 'initOrder',
+            payload: { car: _carsList[imageIndex(page)] }
+        })
+
+        navigate("/reservation")
+    }
 
     return (
         <>
@@ -88,9 +104,9 @@ export const CarCarousal = (prosp) => {
                         <AnimatePresence initial={false} exitBeforeEnter>
                             <div className="w-1/3 -translate-x-">
                                 <motion.img
-                                    key={_carsList[imageIndex(page - 1)]?.title}
+                                    key={_carsList[imageIndex(page + 1)]?.sub}
                                     animate={{ opacity: 1, y: 0, x: -200 }}
-                                    initial={{ opacity: 0, y: 0, x: 0 }}
+                                    initial={{ opacity: 0, y: 0, x: direction > 0 ? -400 : 0 }}
                                     exit={{ opacity: 0, x: -600 }}
                                     transition={{ duration: 0.15 }}
                                     className=' '
@@ -102,10 +118,10 @@ export const CarCarousal = (prosp) => {
                             </div>
                             <div className='w-/3'>
                                 <motion.img
-                                    key={_carsList[imageIndex(page)]?.title}
+                                    key={_carsList[imageIndex(page)]?.sub}
                                     animate={{ opacity: 1, y: 0, x: 0 }}
                                     initial={{ opacity: 0, y: 0, x: 0 }}
-                                    exit={{ opacity: 0, x: -600 }}
+                                    exit={{ opacity: 0, x: 0 }}
                                     className=' '
                                     src={_carsList[imageIndex(page)]?.image} />
                             </div>
@@ -115,9 +131,9 @@ export const CarCarousal = (prosp) => {
                             <div className="w-1/3 translate-x-">
 
                                 <motion.img
-                                    key={_carsList[imageIndex(page + 1)]?.title}
+                                    key={_carsList[imageIndex(page - 1)]?.sub}
                                     animate={{ opacity: 1, y: 0, x: 200 }}
-                                    initial={{ opacity: 0, y: 0, x: 400 }}
+                                    initial={{ opacity: 0, y: 0, x: direction > 0 ? -200 : 400 }}
                                     exit={{ opacity: 0, x: 0 }}
                                     className=' '
                                     src={_carsList[imageIndex(page + 1)]?.image} />
@@ -153,9 +169,9 @@ export const CarCarousal = (prosp) => {
                 <div className="pt-12 text-center">
                     <SlideTop>
 
-                    <Link to="/reservation">
-                    <ButtonFilled label="RESERVE NOW" className="w-fit mx-auto text-sm" />
-                    </Link>
+                    {/* <Link to="/fleet"> */}
+                        <ButtonFilled onClick={updateCar}  label="RESERVE NOW" className="w-fit mx-auto text-sm" />
+                    {/* </Link> */}
                     </SlideTop>
                 </div>
             </div>

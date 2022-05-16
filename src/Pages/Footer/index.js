@@ -59,7 +59,7 @@ export default function Footer(props) {
                                 }
                             </div>
                         <div className='pt-8 lg:pt-0'>
-                            <Link to="/reservation">
+                            <Link to="/fleet">
                             <ButtonFilled label="RESERVE NOW" className="ml-auto mr-auto lg:mr-0 w-fit text-sm" />
                             </Link>
                         </div>

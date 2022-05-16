@@ -1,23 +1,48 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 
 import { ButtonFilled } from 'Components/Button';
 import { PickUpData } from 'Components/PickUpData';
 
+import { Store } from 'Store/orderStore'
+
 export default function ReserveCard(props) {
 
 
-    const [inputs, setInputs] = useState({
-        from: "",
-        to: "",
-        time : ""
-    });
+    const _store = useContext(Store)
+    const storeInputs = _store?.state?.order
 
+    const [inputs, setInputs] = useState({
+        from: '',
+        to: '',
+        date: '',
+        time: '',
+    })
     const handleChange = (val) => {
+
         setInputs(prev => ({
             ...prev,
             ...val
         }));
     };
+
+    const updateStore = () => {
+        
+        _store.dispatch({
+            type: 'initOrder',
+            payload: inputs
+        })
+    }
+
+    useEffect(() => {
+        setInputs(prev => ({
+            ...prev,
+            ...storeInputs
+        }))
+    }, [])
+
+    useEffect(() =>{
+        updateStore()
+    }, [inputs])
 
     return (
         <>

@@ -26,7 +26,7 @@ export default function Hero(props) {
                         <div className="text-center px-4">
                             <JustAppear>
 
-                            <Link to="/reservation">
+                            <Link to="/fleet">
                                 <Button label="Reserve Now" className="text-center px-14 mr-auto lg:mx-auto w-fit" />
                             </Link>
                             </JustAppear>
