@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 import { SlideTop, SlideBottom, SlideLeft, SlideRight } from 'Components/SlideAnimation'
 
+
 export const ReserveCard = (props) => {
 
     const [inputs, setInputs] = useState({
@@ -20,23 +21,27 @@ export const ReserveCard = (props) => {
         }));
     };
 
+
     return (
         <div className=''>
             <div className="container mx-auto w-full  ">
-                <div className="text-center font-bold text-white text-3xl pb-8">
+                <div className="text-center font-bold text-white text-3xl pb-16">
                     <SlideBottom>
                     Reserve the car now 
                     </SlideBottom>
                 </div>
+               
                 <div className="relative h-56 lg:h-0">
                     <SlideTop>
                     <div className="flex flex-wrap absolute w-full bg-[#1A1A1A] p-3 rounded-3xl">
                         <div className="grow">
                         <PickUpData />
                         </div>
-                        <Link to="/reservation">
-                        <ButtonFilled label={<>Reserve&nbsp;now</>} className="mr-0 ml-auto w-full lg:w-fit  text-sm my-2 lg:my-0" />
-                        </Link>
+                        <div className="px-3 w-full lg:w-fit">
+                            <Link to="/reservation">
+                                <ButtonFilled label={<>Reserve&nbsp;now</>} className="mr-0 ml-auto w-full lg:w-fit  text-sm my-2 lg:my-0" />
+                            </Link>
+                        </div>
                     </div>
                     </SlideTop>
                     

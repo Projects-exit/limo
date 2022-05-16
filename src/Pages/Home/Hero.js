@@ -68,7 +68,7 @@ export default function Hero(props) {
                         </div>
                         <div className="relative ">
                             <div className="absolute flex justify-center w-full  h-96 overflow-hidden">
-                                <Ripple className='-translate-y-44  translate-x-64' />
+                                <Ripple className='-translate-y-36  translate-x-64' />
                             </div>
                             <SlideTop>
                                 <div className='hidden lg:flex justify-center absolute w-full -translate-y-14 items-center z-30 bg-transparent'>
