@@ -101,7 +101,7 @@ const DateTimeInput = (props) => {
                 onClick={() => setOpen(true)}
                 className="relative w-1/2 border-copper border w-full bg-transparent rounded-3xl rounded-r-none text-white flex items-center justify-center">
                     <div className="div">
-                        {selectedDay ? format(new Date(selectedDay), 'MM/dd/yyyy') : null}
+                        {selectedDay ? format(new Date(selectedDay), 'MM/dd/yyyy') : "Pick a date"}
                     </div>
                     <style>{css}</style>
                 
@@ -126,11 +126,11 @@ const DateTimeInput = (props) => {
                 onClick={() => setOpenTime(true)}
                 className="w-1/2 relative border-copper border w-full bg-transparent rounded-3xl rounded-l-none text-white flex items-center justify-center ">
                     <div className=""> 
-                        {selectedTime}
+                        {selectedTime ? selectedTime : "Pick a time"}
                      </div>
                 {openTime && <div  className='absolute top-16 bg-grey w-full h-32  z-30 rounded-3xl border-copper border  overflow-hidden'>
                     <Outsideclick onOutsideClick={() => setOpenTime(false)}>
-                        <div className="h-32 overflow-y-scroll special-scrollbar">
+                        <div className="h-32 overflow-y-scroll special-scrollbar text-center">
                             <GenerateTime />
                         </div>
                     </Outsideclick>
