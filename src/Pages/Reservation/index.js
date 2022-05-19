@@ -5,6 +5,7 @@ import { EntryScreen, ChangeScreen } from 'Components/SplashScreens'
 import Navbar from 'Pages/Navbar'
 import Footer from 'Pages/Footer'
 
+
 import { useScrollBehaviours } from 'Hooks/useScrollBehaviours'
 
 export default function Index(props) {
@@ -20,6 +21,7 @@ export default function Index(props) {
         <EntryScreen/>
         <ChangeScreen />
         <Navbar />
+        
         <Payment/>
         <Footer />
             

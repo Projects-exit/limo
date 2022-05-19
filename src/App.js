@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import './Spinner.css'
 
 import RenderRoutes from 'Routes'
 

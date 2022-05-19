@@ -131,7 +131,7 @@ const DateTimeInput = (props) => {
                     </div>
                     <style>{css}</style>
                 
-                {open && <div  className='absolute top-16 left-0 bg-grey w-fit z-30 rounded-3xl border-copper border'>
+                {open && <div  className='absolute top-16 left-0 bg-grey w-fit z-10 rounded-3xl border-copper border'>
                     <Outsideclick
                         onOutsideClick={() => setOpen(false)}
                         >

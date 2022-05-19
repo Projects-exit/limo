@@ -5,6 +5,7 @@ import { SlideTop, SlideBottom, SlideLeft, SlideRight, JustAppear } from 'Compon
 import { Button, ButtonFilled } from 'Components/Button'
 import { CardGrey } from 'Components/Cards'
 
+
 import {CarDetail} from 'Pages/Fleet/CarDetail'
 import { _carsList } from 'Pages/_carsList'
 
@@ -13,12 +14,17 @@ import { Store } from 'Store/orderStore'
 import { PickUpData } from 'Components/PickUpData';
 import { AddressData } from 'Components/AddressData';
 import Ripple from 'Assets/Bg/ripple.svg'
+// import Checkout from './Checkout'
+// import Outsideclick from 'Hooks/OutsideClick'
 // import {ReactComponent as Ripple} from 'Assets/Bg/ripple.svg'
 
 export default function Payment(props) {
     
     const _store = useContext(Store)
     const storeInputs = _store?.state?.order
+
+    const [checkOut, setCheckOut] = useState(false)
+    const navigate = useNavigate()
 
     const [inputs, setInputs] = useState({
         from : '',
@@ -83,6 +89,15 @@ export default function Payment(props) {
                     <Ripple className='-translate-y-[360px]  translate-x-[310px]' />
                 </div>
             </div> */}
+            {/* {checkOut && 
+            <div className="fixed w-full h-full bg-black/20 backdrop-blur-sm z-30">
+                    <div className="w-full max-w-lg mx-auto">
+                        <Outsideclick onOutsideClick={() => setCheckOut(false)}>
+                                <Checkout />
+                        </Outsideclick>
+                    </div>
+            </div>
+            } */}
              <div 
                 style={{
                     background : ` url(${Ripple}), black`,
@@ -135,7 +150,10 @@ export default function Payment(props) {
                                     handleChange={handleChange}
                                     />
                                    <div className="pt-4">
-                                       <ButtonFilled label="PAYMENT" className="text-center w-full lg:w-fit lg:ml-auto text-sm" />
+                                        {/* <button class="css style" type="button" id="SS_ProductCheckout" data-id="1" data-url="http://localhost:1337"> Buy Now </button> */}
+                                       <ButtonFilled 
+                                        onClick={() => navigate(`/payment/${storeInputs?.car?.strapiStripeId}`)}
+                                        label="PAYMENT" className="text-center w-full lg:w-fit lg:ml-auto text-sm" />
                                    </div>
                                </div>
                            </div>

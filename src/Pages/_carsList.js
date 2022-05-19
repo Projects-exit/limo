@@ -13,7 +13,9 @@ export const _carsList = [
         title: "Mercedes-Benz",
         sub: "S-Class",
         seat: 2,
-        luggage: 3
+        luggage: 3,
+        strapiStripeId : '1',
+        // stripeProductId : 'prod_LhkdEZ77TJJOoE'
     },
     {
         id:2,
@@ -21,7 +23,8 @@ export const _carsList = [
         title: "Cadillac",
         sub: "XTS",
         seat: 3,
-        luggage: 3
+        luggage: 3,
+        strapiStripeId : '2',
     },
     {
         id:3,
@@ -29,7 +32,8 @@ export const _carsList = [
         title: "Cadillac",
         sub: "Escalade",
         seat: 6,
-        luggage: 6
+        luggage: 6,
+        strapiStripeId : '3',
     },
     {
         id:4,
@@ -37,7 +41,8 @@ export const _carsList = [
         title: "BMW",
         sub: "740LI",
         seat: 3,
-        luggage: 3
+        luggage: 3,
+        strapiStripeId : '4',
     },
     {
         id:5,
@@ -45,7 +50,8 @@ export const _carsList = [
         title: "Rolls Royce",
         sub: "Ghost",
         seat: 3,
-        luggage: 3
+        luggage: 3,
+        strapiStripeId : '5',
     },
     {
         id:6,
@@ -53,6 +59,7 @@ export const _carsList = [
         title: "Chevrolet",
         sub: "Suburban",
         seat: 3,
-        luggage: 3
+        luggage: 3,
+        strapiStripeId : '6',
     },
 ];
