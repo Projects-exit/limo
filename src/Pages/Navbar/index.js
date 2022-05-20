@@ -34,7 +34,9 @@ export default function Index(props) {
                         <div className="text-copper mx-5">
                             818-929-5353
                         </div>
+                        <Link to="/fleet">
                         <ButtonFilled label="PAYMENT" className="text-xs" />
+                        </Link>
                     </div>
                 </div>
                 <div className="block lg:hidden cursor-pointer" onClick={() => setOpen(true)}>

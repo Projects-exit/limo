@@ -43,7 +43,11 @@ export default function Success(props) {
         setloading(false)
     }
 
-    const _date = (date) => format(new Date(date), 'dd/MM/yyyy')
+    const _date = (date) => {
+        if(date){
+            return format(new Date(date), 'dd/MM/yyyy')
+        }
+    }
 
     useEffect(() => {
         // console.log(checkoutSessionId)

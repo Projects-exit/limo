@@ -112,11 +112,15 @@ const DateTimeInput = (props) => {
 
         return(<div  className=''>
             {_hours_1.map(item => <div 
-                onClick={() => handleTimeChangeFun(`${item}:00 AM`)}
+                onClick={() =>{ 
+                    handleTimeChangeFun(`${item}:00 AM`)
+                }}
                 className='py-2 hover:bg-amber-700/30 cursor-pointer'> {item}:00 AM </div>)}
             
             {_hours_2.map(item => <div 
-                onClick={() => handleTimeChangeFun(`${item}:00 PM`)}
+                onClick={() => {
+                    handleTimeChangeFun(`${item}:00 PM`)
+                }}
                 className='py-2 hover:bg-amber-700/30 cursor-pointer'> {item}:00 PM </div>)}
         </div>)
     }
@@ -124,9 +128,11 @@ const DateTimeInput = (props) => {
     return (
         <div className="flex w-full h-full min-h-[40px]">
             <div 
-                onClick={() => setOpen(true)}
+                
                 className="relative w-1/2 border-copper border w-full bg-transparent rounded-3xl rounded-r-none text-white flex items-center justify-center">
-                    <div className="div">
+                    <div 
+                        onClick={() => setOpen(true)}
+                        className="w-full text-center h-full flex justify-center items-center cursor-pointer"> 
                         {inputDate ? format(new Date(inputDate), 'MM/dd/yyyy') : "Pick a date"}
                     </div>
                     <style>{css}</style>
@@ -148,10 +154,10 @@ const DateTimeInput = (props) => {
                 </div>
                 }
             </div>
-            <div 
-                onClick={() => setOpenTime(true)}
-                className="w-1/2 relative border-copper border w-full bg-transparent rounded-3xl rounded-l-none text-white flex items-center justify-center ">
-                    <div className=""> 
+            <div  className="w-1/2 relative border-copper border w-full bg-transparent cursor-pointer rounded-3xl rounded-l-none text-white flex items-center justify-center ">
+                    <div 
+                         onClick={() => setOpenTime(true)}
+                        className="w-full text-center h-full flex justify-center items-center"> 
                         {inputTime ? inputTime : "Pick a time"}
                      </div>
                 {openTime && <div  className='absolute top-16 bg-grey w-full h-32  z-30 rounded-3xl border-copper border  overflow-hidden'>

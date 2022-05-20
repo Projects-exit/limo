@@ -1,4 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react'
+import * as Yup from "yup";
+
 import { Link, useNavigate } from 'react-router-dom'
 import { SlideTop, SlideBottom, SlideLeft, SlideRight, JustAppear } from 'Components/SlideAnimation'
 
@@ -37,17 +39,20 @@ export default function Payment(props) {
         info : ''
     })
 
-    const isInputsEmpty = (obj) => {
-        let isEmpty = true
-         Object.keys(obj).some(key => {
-             if(obj[key] !== '') {
-                isEmpty = false
-                 return true
-                 
-             }
-         })
-         return isEmpty
-    }
+    const [error, setError] = useState({})
+
+    const Schema = Yup.object({
+        info: Yup.string().required("Additional info  is a required field"),
+        phone: Yup.string().required("Phone is a required field"),
+        name: Yup.string().required("Name is a required field"),
+        email: Yup.string().required("Email is a required field").email("Invalid email"),
+        time: Yup.string().required("Time is a required field"),
+        date: Yup.string().required("Date is a required field"),
+        to: Yup.string().required("Destination is a required field"),
+        from: Yup.string().required("Pick up is a required field"),
+
+    });
+
 
     const handleChange = (val) => {
         
@@ -75,6 +80,15 @@ export default function Payment(props) {
             ...storeInputs
         }))
     }, [])
+
+    const RedirectToConfirmationPage = async() => {
+        try {
+            await Schema.validate(inputs)
+            navigate(`/payment/${storeInputs?.car?.strapiStripeId}`)
+        } catch(ex) {
+            setError({ message: ex?.errors ?? 'Error' })
+        }
+    }
 
     useEffect(() =>{
         updateStore()
@@ -143,6 +157,9 @@ export default function Payment(props) {
                                     inputs={inputs}
                                     handleChange={handleChange}
                                     className="w-full py-2" />
+                                    <div className="text-xs text-red-500 pt-2 text-center">
+                                        {error?.message}
+                                    </div>
                                </div>
                                <div>
                                    <AddressData
@@ -152,7 +169,7 @@ export default function Payment(props) {
                                    <div className="pt-4">
                                         {/* <button class="css style" type="button" id="SS_ProductCheckout" data-id="1" data-url="http://localhost:1337"> Buy Now </button> */}
                                        <ButtonFilled 
-                                        onClick={() => navigate(`/payment/${storeInputs?.car?.strapiStripeId}`)}
+                                        onClick={() => RedirectToConfirmationPage()}
                                         label="PAYMENT" className="text-center w-full lg:w-fit lg:ml-auto text-sm" />
                                    </div>
                                </div>

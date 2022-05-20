@@ -18,6 +18,8 @@ import { Store } from 'Store/orderStore'
 
 import Ripple from 'Assets/Bg/ripple.svg'
 import { Loader } from 'Components/Loader'
+import { format } from 'date-fns'
+import { isAnyValueEmpty } from 'Hooks/utils'
 
 export default function Confirmation(props) {
 
@@ -26,6 +28,8 @@ export default function Confirmation(props) {
 
     const [orderdata, setorderdata] = useState(false)
     const [loading, setLoading] = useState(false)
+
+    const navigate = useNavigate()
 
 
     const [inputs, setInputs] = useState({
@@ -57,8 +61,17 @@ export default function Confirmation(props) {
         setLoading(false)
     }
 
+    const checkDataAndRedirect = () => {
+        console.log("confirm",isAnyValueEmpty(inputs))
+        // console.log(inputs)
+        if(isAnyValueEmpty(storeInputs)){
+            navigate('/reservation')
+        }
+    }
+
     useEffect(() => {
         LoadPrice()
+        checkDataAndRedirect()
     }, [])
 
 
@@ -69,7 +82,6 @@ export default function Confirmation(props) {
             ...storeInputs
         }))
     }, [])
-
 
 
 
@@ -136,7 +148,7 @@ export default function Confirmation(props) {
                                                <Link to={`${orderdata?.stripePriceId ? `/payment/${orderdata?.stripePriceId}/redirect` : '/payment'}`}>
                                                 <ButtonFilled 
                                                     // onClick={() => setCheckOut(true)}
-                                                    label="PAYMENT" className="text-center w-full lg:w-fit lg:ml-auto text-sm" />
+                                                    label="CHECK OUT" className="text-center w-full lg:w-fit lg:ml-auto text-sm" />
                                                 </Link>
                                             </div>
                                         </div>
@@ -156,6 +168,13 @@ const DisplayDetails = ({ inputs }) => {
 
     const list = ["from", "to", "date", "time", "name", "email", "phone", "info"]
 
+    const _date = (date) => {
+        if(date) {
+           return format(new Date(date), 'dd/MM/yyyy')
+        } 
+    }
+
+
     const Row = ({ item }) => (<div className='flex text-white py-2'>
         <div className='grow font-bold text-copper'> {item} : </div>
         <div className='grow '>{`${inputs?.[item]}`} </div>
@@ -164,8 +183,32 @@ const DisplayDetails = ({ inputs }) => {
     return (
         <>
             <div className="div w-full">
-                {list.map(key => <Row key={key} item={key} />)}
-
+                <div className="font-bold text-white py-3">
+                    Booking details
+                </div>
+                <div className='flex text-white py-1'>
+                    <div className='w-32 font-bold text-copper'> Name </div>
+                    <div className='grow '>: {inputs?.name} </div>
+                </div>
+                <div className='flex text-white py-1'>
+                    <div className='w-32 font-bold text-copper'> From </div>
+                    <div className='grow '>: {inputs?.from} </div>
+                </div>
+                <div className='flex text-white py-1'>
+                    <div className='w-32 font-bold text-copper'> To </div>
+                    <div className='grow '>: {inputs?.to} </div>
+                </div>
+                <div className='flex text-white py-1'>
+                    <div className='w-32 font-bold text-copper'> date </div>
+                    <div className='grow '>: {`${_date(inputs?.date)}`} </div>
+                </div>
+                <div className='flex text-white py-1'>
+                    <div className='w-32 font-bold text-copper'> Time </div>
+                    <div className='grow '>: {inputs?.time} </div>
+                </div>
+                {/* <div className="font-bold text-white py-3">
+                    User details
+                </div> */}
             </div>
         </>
     )

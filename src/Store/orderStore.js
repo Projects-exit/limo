@@ -3,8 +3,8 @@ import { _carsList } from 'Pages/_carsList';
 
 const stateModal = {
     order : {
-        from : 'Orange county',
-        to : 'Somewhere',
+        from : '',
+        to : '',
         date : '',
         time : '',
         car : _carsList[0],
