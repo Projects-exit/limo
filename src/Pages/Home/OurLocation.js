@@ -48,10 +48,23 @@ export default function OurLocation(props) {
 
     return (
         <>
-        <div className="relative">
+        <div className="relative hidden sm:block">
             <div className="absolute flex justify-end w-full top-0 right-0 overflow-x-clip ">
-                <Ripple className='-translate-y-96  translate-x-64' />
+                <Ripple className='-translate-y-44  translate-x-24' />
             </div>
+            <SlideRight>
+                <div className="h-[0.5px] w-56 bg-copper absolute -top-20 right-0"></div>
+            </SlideRight>  
+            <SlideRight>
+                <div className="h-[0.5px] w-72 bg-copper absolute top-0 right-0"></div>
+            </SlideRight>  
+            <SlideRight>
+                <div className="h-[0.5px] w-56 bg-copper absolute  top-24"></div>
+            </SlideRight>
+            <SlideRight>
+                <div className="h-[0.5px] w-96 bg-copper absolute  top-40"></div>
+            </SlideRight>
+        
         </div>
         <div className='bg-black py-24 '>
             <div className="text-3xl text-white text-center font-bold">
@@ -60,7 +73,7 @@ export default function OurLocation(props) {
                 Our locations
                 </SlideTop>
             </div>
-            <div className="py-20 container mx-auto">
+            <div className="py-20 pt-32 container mx-auto">
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-16">
                     {_locations.map(item => <div key={item.title} className={`relative ${item.className} overflow-hidden rounded-3xl min-h-[250px]`}>
                         <div className="absolute w-full h-full  bg-black-grad"></div>

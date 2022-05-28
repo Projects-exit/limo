@@ -38,8 +38,8 @@ export default function Drivers(props) {
             <div>
                 <SlideTop>
 
-                <div className="text-copper pb-12">{item?.title}</div>
-                <div className="text-grey">{item?.description}</div>
+                <div className="text-2xl font-bold text-copper pb-12">{item?.title}</div>
+                <div className="text-grey ">{item?.description}</div>
                 </SlideTop>
             </div>
         )
@@ -53,6 +53,9 @@ export default function Drivers(props) {
                 <div className="w-full h-full bg-black/80 py-20">
                     <div className="relative hidden sm:block">
                         <SlideRight>
+                            <div className="h-[0.5px] w-96 bg-copper absolute -top-44 right-0"></div>
+                        </SlideRight>
+                        <SlideRight>
                             <div className="h-[0.5px] w-32 bg-copper absolute  right-0"></div>
                         </SlideRight>
                         <SlideLeft>
@@ -60,7 +63,7 @@ export default function Drivers(props) {
                         </SlideLeft>
                     </div>
                     <div className="container mx-auto ">
-                        <div className="text-3xl text-white pb-20">
+                        <div className="text-3xl font-bold text-white pb-20">
                             <SlideLeft>
                             Our drivers
                             </SlideLeft>
@@ -71,6 +74,7 @@ export default function Drivers(props) {
                     </div>
                     <div className="h-32 hidden sm:block">
                         <div className="relative">
+                           
                             <SlideRight>
                                 <div className="h-[0.5px] w-32 bg-copper absolute top-24"></div>
                             </SlideRight>

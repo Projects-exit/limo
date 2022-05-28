@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 
-import Layout from './Layout'
+import Layout from '../../Components/Layout'
 import { Loader } from 'Components/Loader'
 import { useParams } from 'react-router-dom'
 

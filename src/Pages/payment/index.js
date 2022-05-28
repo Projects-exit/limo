@@ -1,7 +1,7 @@
 import React from 'react'
 // import StripeContainer from './stripeContainer'
 import Confirmation from './Confirmation'
-import Layout from './Layout'
+import Layout from '../../Components/Layout'
 import { EntryScreen, ChangeScreen } from 'Components/SplashScreens'
 
 

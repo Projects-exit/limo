@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 // ** assets
 import carImage from 'Assets/Bg/hero_car.png'
-import { ReactComponent as ScrollBar } from 'Assets/Misc/scroll.svg'
+import { ReactComponent as ScrollBar } from 'Assets/Misc/scroll2.svg'
 import { ReactComponent as Ripple } from 'Assets/Bg/ripple.svg'
 import { Button } from 'Components/Button'
 
@@ -20,18 +20,20 @@ export default function Hero(props) {
                     <Ripple className='-translate-y-[360px] translate-x-[200px]   sm:translate-x-[310px]' />
                 </div>
             </div>
-            <div className="hero bg-black  pt-44   w-full bg-red-">
+            <div className="relative z-10 hero   pt-20   w-full bg-red-">
                 <div className=" mx-auto ">
-                    <div className="relative">
-                        <div className="text-center px-4">
+                    <div className="">
+                        <div className="text-center px-4 pt-16 ">
                             <JustAppear>
+                                <div className="w-fit mx-auto">
 
-                            <Link to="/fleet">
-                                <Button label="Reserve Now" className="text-center px-14 mr-auto lg:mx-auto w-fit" />
+                            <Link to="/fleet" >
+                                <Button label="Reserve Now" className="text-center px-14 mr-auto lg:mx-auto w-fit cursor-pointer" />
                             </Link>
+                                </div>
                             </JustAppear>
                         </div>
-                        <div className="px-4 py-2 text-grey-l text-4xl sm:text-7xl w-44 sm:w-full text-left sm:text-center  translate-y-10  sm:translate-y-14 uppercase font-bold  z-20">
+                        <div className="px-4   py-2 text-grey-l text-4xl sm:text-7xl w-44 sm:w-full text-left sm:text-center   uppercase font-bold  z-20">
                             <SlideLeft  >
                                 Limousine service
                             </SlideLeft>
@@ -39,7 +41,7 @@ export default function Hero(props) {
                                 at Your doorstep
                             </SlideRight>
                         </div>
-                        <div className="relative h-[200px] lg:h-[380px] xl:h-[450px] ">
+                        <div className="relative h-[200px] lg:h-[380px] xl:h-[450px] -translate-y-16">
                             <div className="hidden sm:block">
 
                                 <SlideRight>
@@ -59,7 +61,7 @@ export default function Hero(props) {
                                     <div className="h-[0.5px] w-24 bg-copper absolute top-64 right-0"></div>
                                 </SlideLeft>
                             </div>
-
+                            {/* =============== Car ============== */}
                             <div className="absolute w-full text-center">
                                 <JustAppear>
                                 <img src={carImage} alt="" className='z-10 w-full  max-w-7xl mx-auto' />

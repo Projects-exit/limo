@@ -14,9 +14,9 @@ export default function Quality(props) {
         <>
             <div className="w-full bg-black   ">
                 <div className="">
-                    <div className="relative h-[1050px] lg:h-[800px] ">
+                    <div className="relative h-[1050px] lg:h-[700px] ">
                         
-                        <div className="absolute w-full   z-20 ">
+                        <div className="absolute w-full   z-10 ">
                             <div className="container  mx-auto  mt-12">
 
                             <div className="flex flex-wrap bg-grey">

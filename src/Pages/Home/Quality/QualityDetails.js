@@ -9,6 +9,7 @@ export const QualityDetails = (props) => {
 
     const [page, setPage] = useState(0);
 
+
     const [active, setActive] = useState(_qualityList[0]);
 
     const qualityIndex = (page) => wrap(0, _qualityList.length, page);
@@ -18,21 +19,42 @@ export const QualityDetails = (props) => {
         // setActive(qualityIndex(page))
     };
 
+    const setActiveonClick = (index) => {
+        setSeconds(index)
+    }
+
+
     useEffect(() => {
         setActive(_qualityList?.[qualityIndex(page)])
     }, [page])
 
+    const [seconds, setSeconds] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setSeconds(seconds => seconds + 1);
+        }, 4000);
+        return () => clearInterval(interval);
+    }, []);
+
+    useEffect(() => {
+        // console.log("seconds") 
+        // paginate(1)
+        setPage(seconds)
+    }, [seconds])
+
+
     // const Header = ({item}) => ()
     return (<>
-            <div className="absolute left-0 hidden sm:block">
-                <PageBubble qualityIndex={active} />
-            </div>
+        <div className="absolute left-0 hidden sm:block">
+            <PageBubble qualityIndex={active} />
+        </div>
         <div className='flex flex-col justify-between h-full'>
             <div className="flex w-full overflow-scroll no-scrollbar scroll-smooth">
-                {_qualityList.map(item => (<div
+                {_qualityList.map((item, index) => (<div
                     key={item?.title}
                     className={`pr-6  cursor-pointer ${active?.title === item?.title ? 'text-white' : 'text-[#838383]'}`}
-                    onClick={() => setActive(item)}
+                    onClick={() => setActiveonClick(index)}
                 >
                     {item?.title}
                     {active?.title === item?.title ?
@@ -65,7 +87,7 @@ export const QualityDetails = (props) => {
             </div>
 
         </div>
-        </>
+    </>
     );
 };
 

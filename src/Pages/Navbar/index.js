@@ -18,7 +18,7 @@ export default function Index(props) {
     return (
         <>
         <div className={`${_floatNav ? 'bg-black' : ''} fixed top-0 z-40 w-full`}>
-            <div className="flex justify-between px-6 pt-5 items-center">
+            <div className="flex justify-between items-center px-6 py-2 items-center">
                 <div className='w-fit'>
                     <Link to="/">
                         <Logo width={140} />

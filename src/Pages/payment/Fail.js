@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios'
 import { ButtonFilled } from 'Components/Button';
 
-import Layout from './Layout'
+import Layout from '../../Components/Layout'
 
 
 export default function Fail(props) {

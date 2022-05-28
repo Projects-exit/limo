@@ -27,7 +27,7 @@ export const EntryScreen = (props) => {
                     damping: 30,
                     // ease: "easeInOut"
                 }}
-                className=" fixed h-full bg-copper">
+                className=" fixed h-full bg-grey">
 
             </motion.div>
         </React.Fragment>
@@ -61,7 +61,7 @@ export const ChangeScreen = (props) => {
                     damping: 30
                     // ease: "easeInOut"
                 }}
-                className=" fixed h-full bg-grey">
+                className=" fixed h-full bg-black">
 
             </motion.div>
         </React.Fragment>

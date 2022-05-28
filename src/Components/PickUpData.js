@@ -17,7 +17,7 @@ export const PickUpData = (props) => {
 
 
     return (<>
-        <div className="flex  flex-wrap w-full ">
+        <div className="flex  flex-wrap w-full text-sm">
             <InputText
                 className={`${className ? className : 'w-full lg:w-1/3 my-2 lg:my-0  px-3'} `}
                 value={inputs?.from}
@@ -137,7 +137,7 @@ const DateTimeInput = (props) => {
                     </div>
                     <style>{css}</style>
                 
-                {open && <div  className='absolute top-16 left-0 bg-grey w-fit z-10 rounded-3xl border-copper border'>
+                {open && <div  className='absolute top-16 left-0 bg-grey w-fit z-20 rounded-3xl border-copper border'>
                     <Outsideclick
                         onOutsideClick={() => setOpen(false)}
                         >

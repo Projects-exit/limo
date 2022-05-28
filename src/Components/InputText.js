@@ -8,7 +8,7 @@ export const InputText = (props) => {
         <div className={className}>
             <input
                 type={type}
-                className={`${inputClassName}  border-copper border w-full bg-transparent rounded-3xl text-white px-5 py-2`}
+                className={`${inputClassName}  border-copper border w-full bg-transparent rounded-3xl text-white px-5 py-2 placeholder-white`}
                 value={value}
                 onChange={handleChange}
                 placeholder={placeholder}

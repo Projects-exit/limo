@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Layout from './Layout'
+import Layout from '../../Components/Layout'
 
 import { Link } from 'react-router-dom';
 import axios from 'axios'

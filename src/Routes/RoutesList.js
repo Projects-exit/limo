@@ -2,6 +2,7 @@ import Home from 'Pages/Home'
 import Fleet from 'Pages/Fleet'
 import Reservation from 'Pages/Reservation'
 import Privacy from 'Pages/Privacy'
+import Terms from 'Pages/Privacy/Terms'
 import Payment from 'Pages/payment'
 import Redirect from 'Pages/payment/Redirect'
 import Fail from 'Pages/payment/Fail'
@@ -22,8 +23,12 @@ const routesList = [
         component :  <Reservation />
     },
     {
-        path : '/privacy',
+        path : '/privacy-policy',
         component :  <Privacy />
+    },
+    {
+        path : '/terms-and-conditions',
+        component :  <Terms />
     },
     {
         path : '/payment/:id',

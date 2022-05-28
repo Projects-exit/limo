@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
 import { SlideTop, SlideBottom, SlideLeft, SlideRight } from 'Components/SlideAnimation'
@@ -73,6 +73,21 @@ export const CarCarousal = (prosp) => {
         navigate("/reservation")
     }
 
+    const [seconds, setSeconds] = useState(0);
+
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         setSeconds(seconds => seconds - 1);
+    //     }, 3000);
+    //     return () => clearInterval(interval);
+    // }, []);
+
+    // useEffect(() => {
+    //     // console.log("seconds") 
+    //     // paginate(1)
+    //     setPage([seconds - 1, 1]);
+    // }, [seconds])
+
     return (
         <>
             <div
@@ -101,16 +116,28 @@ export const CarCarousal = (prosp) => {
                 </div>
                 <div className='flex justify-between items-center  w-full  overflow-x-hidden h-96  '>
                     <>
-                        <AnimatePresence initial={false} exitBeforeEnter>
-                            <div className="w-1/3 -translate-x-">
+                        {/* <AnimatePresence initial={false} exitBeforeEnter> */}
+                            <div className="w-1  -translate-x-">
+                                <motion.img
+                                    key={_carsList[imageIndex(page + 2)]?.sub}
+                                    layoutId={_carsList[imageIndex(page + 2)]?.id}
+                                    animate={{ opacity: 1, y: 0, x: -600 }}
+                                    // initial={{ opacity: 0, y: 0, x: direction > 0 ? -400 : 0 }}
+                                    // exit={{ opacity: 0, x: -600 }}
+                                    // transition={{ duration: 0.15 }}
+                                    className=' '
+                                    src={_carsList[imageIndex(page + 2)]?.image} />
+                            </div>
+                            <div className="w-1/3 -translate-x-" onClick={() => paginate(-1)} >
                                 <motion.img
                                     key={_carsList[imageIndex(page + 1)]?.sub}
+                                    layoutId={_carsList[imageIndex(page + 1)]?.id}
                                     animate={{ opacity: 1, y: 0, x: -200 }}
-                                    initial={{ opacity: 0, y: 0, x: direction > 0 ? -400 : 0 }}
-                                    exit={{ opacity: 0, x: -600 }}
-                                    transition={{ duration: 0.15 }}
+                                    // initial={{ opacity: 0, y: 0, x: direction > 0 ? -400 : 0 }}
+                                    // exit={{ opacity: 0, x: -600 }}
+                                    // transition={{ duration: 0.15 }}
                                     className=' '
-                                    src={_carsList[imageIndex(page - 1)]?.image} />
+                                    src={_carsList[imageIndex(page + 1)]?.image} />
                             </div>
 
                             <div className="prev " onClick={() => paginate(-1)}>
@@ -119,26 +146,39 @@ export const CarCarousal = (prosp) => {
                             <div className='w-/3'>
                                 <motion.img
                                     key={_carsList[imageIndex(page)]?.sub}
+                                    layoutId={_carsList[imageIndex(page)]?.id}
                                     animate={{ opacity: 1, y: 0, x: 0 }}
-                                    initial={{ opacity: 0, y: 0, x: 0 }}
-                                    exit={{ opacity: 0, x: 0 }}
+                                    // initial={{ opacity: 0, y: 0, x: 0 }}
+                                    // exit={{ opacity: 0, x: 0 }}
                                     className=' '
                                     src={_carsList[imageIndex(page)]?.image} />
                             </div>
                             <div className="next " onClick={() => paginate(1)}>
                                 <svg fill='white' className='ml-12' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z" /></svg>
                             </div>
-                            <div className="w-1/3 translate-x-">
+                            <div className="w-1/3 translate-x-" onClick={() => paginate(1)}>
 
                                 <motion.img
                                     key={_carsList[imageIndex(page - 1)]?.sub}
+                                    layoutId={_carsList[imageIndex(page - 1)]?.id}
                                     animate={{ opacity: 1, y: 0, x: 200 }}
-                                    initial={{ opacity: 0, y: 0, x: direction > 0 ? -200 : 400 }}
-                                    exit={{ opacity: 0, x: 0 }}
+                                    // initial={{ opacity: 0, y: 0, x: direction > 0 ? -200 : 400 }}
+                                    // exit={{ opacity: 0, x: 0 }}
                                     className=' '
-                                    src={_carsList[imageIndex(page + 1)]?.image} />
+                                    src={_carsList[imageIndex(page - 1)]?.image} />
                             </div>
-                        </AnimatePresence>
+                            <div className="w-1 translate-x-">
+
+                                <motion.img
+                                    key={_carsList[imageIndex(page - 2)]?.sub}
+                                    layoutId={_carsList[imageIndex(page - 2)]?.id}
+                                    animate={{ opacity: 1, y: 0, x: 600 }}
+                                    // initial={{ opacity: 0, y: 0, x: direction > 0 ? -200 : 400 }}
+                                    // exit={{ opacity: 0, x: 0 }}
+                                    className=' '
+                                    src={_carsList[imageIndex(page - 2)]?.image} />
+                            </div>
+                        {/* </AnimatePresence> */}
 
                     </>
                 </div>
