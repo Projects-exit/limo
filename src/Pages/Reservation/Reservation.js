@@ -20,7 +20,7 @@ import Ripple from 'Assets/Bg/ripple.svg'
 // import Outsideclick from 'Hooks/OutsideClick'
 // import {ReactComponent as Ripple} from 'Assets/Bg/ripple.svg'
 
-export default function Payment(props) {
+export default function Reservation(props) {
     
     const _store = useContext(Store)
     const storeInputs = _store?.state?.order
@@ -84,7 +84,7 @@ export default function Payment(props) {
     const RedirectToConfirmationPage = async() => {
         try {
             await Schema.validate(inputs)
-            navigate(`/payment/${storeInputs?.car?.strapiStripeId}`)
+            navigate(`/reservation/confirmation/${storeInputs?.car?.strapiStripeId}`)
         } catch(ex) {
             setError({ message: ex?.errors ?? 'Error' })
         }
@@ -170,7 +170,7 @@ export default function Payment(props) {
                                         {/* <button class="css style" type="button" id="SS_ProductCheckout" data-id="1" data-url="http://localhost:1337"> Buy Now </button> */}
                                        <ButtonFilled 
                                         onClick={() => RedirectToConfirmationPage()}
-                                        label="PAYMENT" className="text-center w-full lg:w-fit lg:ml-auto text-sm" />
+                                        label="Check Out" className="text-center w-full lg:w-fit lg:ml-auto text-sm" />
                                    </div>
                                </div>
                            </div>

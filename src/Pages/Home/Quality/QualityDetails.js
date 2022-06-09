@@ -7,6 +7,8 @@ import { _qualityList } from './_qualityList';
 import { PageBubble } from './PageBubble';
 export const QualityDetails = (props) => {
 
+    const {setActiveGlobal} = props
+
     const [page, setPage] = useState(0);
 
 
@@ -25,7 +27,9 @@ export const QualityDetails = (props) => {
 
 
     useEffect(() => {
-        setActive(_qualityList?.[qualityIndex(page)])
+        const temp = _qualityList?.[qualityIndex(page)]
+        setActive(temp)
+        setActiveGlobal(temp)
     }, [page])
 
     const [seconds, setSeconds] = useState(0);
@@ -50,19 +54,7 @@ export const QualityDetails = (props) => {
             <PageBubble qualityIndex={active} />
         </div>
         <div className='flex flex-col justify-between h-full'>
-            <div className="flex w-full overflow-scroll no-scrollbar scroll-smooth">
-                {_qualityList.map((item, index) => (<div
-                    key={item?.title}
-                    className={`pr-6  cursor-pointer ${active?.title === item?.title ? 'text-white' : 'text-[#838383]'}`}
-                    onClick={() => setActiveonClick(index)}
-                >
-                    {item?.title}
-                    {active?.title === item?.title ?
-                        <motion.div className='h-1 w-full bg-copper mt-3' layoutId="underline"></motion.div>
-                        : null}
-                </div>))}
-            </div>
-            <div className='pt-8'>
+        <div className=''>
                 <AnimatePresence exitBeforeEnter>
                     <motion.div
                         key={active ? active.title : "empty"}
@@ -76,6 +68,19 @@ export const QualityDetails = (props) => {
                     </motion.div>
                 </AnimatePresence>
             </div>
+            <div className="flex w-full overflow-scroll no-scrollbar scroll-smooth pt-12">
+                {_qualityList.map((item, index) => (<div
+                    key={item?.title}
+                    className={`pr-6  cursor-pointer ${active?.title === item?.title ? 'text-white' : 'text-[#838383]'}`}
+                    onClick={() => setActiveonClick(index)}
+                >
+                    {item?.title}
+                    {active?.title === item?.title ?
+                        <motion.div className='h-1 w-full bg-copper mt-3' layoutId="underline"></motion.div>
+                        : null}
+                </div>))}
+            </div>
+           
             <div className="pt-12 flex justify-between">
                 <div className="cursor-pointer " onClick={() => paginate(-1)}>
                     <svg fill='#b9884f' className='mr-12' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" /></svg>

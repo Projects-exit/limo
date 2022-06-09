@@ -1,5 +1,5 @@
 import React,{useEffect} from 'react'
-import Payment from './Payment'
+import Reservation from './Reservation'
 import { EntryScreen, ChangeScreen } from 'Components/SplashScreens'
 
 import Navbar from 'Pages/Navbar'
@@ -22,7 +22,7 @@ export default function Index(props) {
         <ChangeScreen />
         <Navbar />
         
-        <Payment/>
+        <Reservation/>
         <Footer />
             
         </>

@@ -1,6 +1,7 @@
 import Home from 'Pages/Home'
 import Fleet from 'Pages/Fleet'
 import Reservation from 'Pages/Reservation'
+import ReservationConfirm from 'Pages/Reservation/Confirmation'
 import Privacy from 'Pages/Privacy'
 import Terms from 'Pages/Privacy/Terms'
 import Payment from 'Pages/payment'
@@ -21,6 +22,10 @@ const routesList = [
     {
         path : '/reservation',
         component :  <Reservation />
+    },
+    {
+        path : '/reservation/confirmation/:id',
+        component :  <ReservationConfirm />
     },
     {
         path : '/privacy-policy',

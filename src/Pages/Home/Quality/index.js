@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import qaualityImg from 'Assets/Bg/quality.png';
 import {ReactComponent as Ripple} from 'Assets/Bg/ripple.svg'
@@ -9,6 +9,7 @@ import { SlideTop, SlideBottom, SlideLeft, SlideRight, JustAppear } from 'Compon
 
 export default function Quality(props) {
 
+    const [activeGlobal, setActiveGlobal] = useState()
 
     return (
         <>
@@ -20,24 +21,25 @@ export default function Quality(props) {
                             <div className="container  mx-auto  mt-12">
 
                             <div className="flex flex-wrap bg-grey">
-                                <div className="w-full lg:w-4/12">
-                                    <img src={qaualityImg} className="w-full h-full" alt="" />
+                                <div className="w-full lg:w-4/12 text-white">
+                                    <img src={activeGlobal?.image} className="w-full h-full" alt="" />
+                                    {/* {activeGlobal?.title} */}
                                 </div>
                                 <div className="w-full lg:w-8/12">
                                     <div className="p-[30px] text-left">
-                                        <div className="pb-4 text-copper font-bold">
+                                        {/* <div className="pb-4 text-copper font-bold">
                                             <SlideLeft>
                                                 Some of our keys
                                             </SlideLeft>
-                                        </div>
+                                        </div> */}
                                         <div className="text-3xl text-white font-bold pb-12">
                                             <SlideLeft>
-                                                Quality services
+                                                Attending events
                                             </SlideLeft>
                                         </div>
                                         <JustAppear>
 
-                                        <QualityDetails />
+                                        <QualityDetails setActiveGlobal={setActiveGlobal} />
                                         </JustAppear>
                                     </div>
                                 </div>
