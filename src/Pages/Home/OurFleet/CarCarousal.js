@@ -75,18 +75,18 @@ export const CarCarousal = (prosp) => {
 
     const [seconds, setSeconds] = useState(0);
 
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //         setSeconds(seconds => seconds - 1);
-    //     }, 3000);
-    //     return () => clearInterval(interval);
-    // }, []);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setSeconds(seconds => seconds - 1);
+        }, 3000);
+        return () => clearInterval(interval);
+    }, []);
 
-    // useEffect(() => {
-    //     // console.log("seconds") 
-    //     // paginate(1)
-    //     setPage([seconds - 1, 1]);
-    // }, [seconds])
+    useEffect(() => {
+        // console.log("seconds") 
+        // paginate(1)
+        setPage([seconds - 1, 1]);
+    }, [seconds])
 
     return (
         <>

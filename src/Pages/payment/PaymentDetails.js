@@ -21,7 +21,7 @@ import { Loader } from 'Components/Loader'
 import { format } from 'date-fns'
 import { isAnyValueEmpty } from 'Hooks/utils'
 
-export default function Confirmation(props) {
+export default function PaymentDetails(props) {
 
     const _store = useContext(Store)
     const storeInputs = _store?.state?.order
@@ -45,15 +45,16 @@ export default function Confirmation(props) {
 
 
 
-    const { id } = useParams()
+    const { code } = useParams()
 
     const LoadPrice = async () => {
         setLoading(true)
         try {
 
-            const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/strapi-stripe/getProduct/${id}`)
-            console.log(res)
-            setorderdata(res?.data)
+            const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/reservation/getReservation`, {
+                code
+            })
+            console.log(res) 
 
         } catch (ex) {
 
@@ -61,27 +62,28 @@ export default function Confirmation(props) {
         setLoading(false)
     }
 
-    const checkDataAndRedirect = () => {
-        console.log("confirm",isAnyValueEmpty(inputs))
-        // console.log(inputs)
-        if(isAnyValueEmpty(storeInputs)){
-            navigate('/reservation')
-        }
-    }
 
-    useEffect(() => {
-        LoadPrice()
-        checkDataAndRedirect()
-    }, [])
+    // const checkDataAndRedirect = () => {
+    //     console.log("confirm",isAnyValueEmpty(inputs))
+    //     // console.log(inputs)
+    //     if(isAnyValueEmpty(storeInputs)){
+    //         navigate('/reservation')
+    //     }
+    // }
+
+    // useEffect(() => {
+    //     LoadPrice()
+    //     checkDataAndRedirect()
+    // }, [])
 
 
 
-    useEffect(() => {
-        setInputs(prev => ({
-            ...prev,
-            ...storeInputs
-        }))
-    }, [])
+    // useEffect(() => {
+    //     setInputs(prev => ({
+    //         ...prev,
+    //         ...storeInputs
+    //     }))
+    // }, [])
 
 
 

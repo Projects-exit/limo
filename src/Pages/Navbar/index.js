@@ -34,7 +34,7 @@ export default function Index(props) {
                         <div className="text-copper mx-5">
                             818-929-5353
                         </div>
-                        <Link to="/fleet">
+                        <Link to="/payment/code">
                         <ButtonFilled label="PAYMENT" className="text-xs" />
                         </Link>
                     </div>

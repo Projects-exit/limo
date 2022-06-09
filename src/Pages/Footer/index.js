@@ -2,7 +2,7 @@ import React from 'react'
 import { ButtonFilled } from 'Components/Button'
 import { Link } from 'react-router-dom'
 
-import { ReactComponent as Logo } from 'Assets/Misc/Logo.svg'
+import { ReactComponent as Logo } from 'Assets/Misc/Logo2.svg'
 import { ReactComponent as ExitLogo } from 'Assets/Misc/exitLogo.svg'
 
 export default function Footer(props) {
@@ -42,12 +42,12 @@ export default function Footer(props) {
         <>
             <div className="footer bg-black pt-24 bg-footer  px-12">
                 <div className="flex flex-wrap justify-between">
-                    <div className="w-full lg:w-3/12 xl:w-6/12">
-                        <Logo className='mx-auto lg:ml-0' />
+                    <div className="w-full lg:w-3/12 xl:w-4/12 2xl:6/12">
+                        <Logo className='mx-auto lg:ml-0' width={230} />
                     </div>
-                    <div className="w-full lg:w-9/12 xl:w-6/12 pt-16 lg:pt-0">
+                    <div className="w-full lg:w-9/12 xl:w-8/12 2xl:6/12 pt-16 lg:pt-0">
                         {/* <div className="flex"> */}
-
+                            
                             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 text-center lg:text-left">
                                 <div>
                                     <div className="text-white font-bold pb-5">Who we are</div>

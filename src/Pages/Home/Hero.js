@@ -79,7 +79,7 @@ export default function Hero(props) {
                             <div className="absolute flex justify-center w-full  h-96 overflow-hidden">
                                 <Ripple className='-translate-y-36  translate-x-64' />
                             </div>
-                            <SlideTop>
+                            {/* <SlideTop> */}
                                 <div className="absolute w-full sm:-translate-y-12 lg:-translate-y-40 z-30 bg-transparent">
                                 {/* Button */}
                                 <div className="hidden sm:block text-center px-4 pb-12">
@@ -92,7 +92,7 @@ export default function Hero(props) {
                                 </div>
                                 </div>
 
-                            </SlideTop>
+                            {/* </SlideTop> */}
                         </div>
 
                     </div>

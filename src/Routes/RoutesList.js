@@ -5,6 +5,7 @@ import ReservationConfirm from 'Pages/Reservation/Confirmation'
 import Privacy from 'Pages/Privacy'
 import Terms from 'Pages/Privacy/Terms'
 import Payment from 'Pages/payment'
+import PaymentDetails from 'Pages/payment/PaymentDetails'
 import Redirect from 'Pages/payment/Redirect'
 import Fail from 'Pages/payment/Fail'
 import Success from 'Pages/payment/success'
@@ -36,8 +37,12 @@ const routesList = [
         component :  <Terms />
     },
     {
-        path : '/payment/:id',
+        path : '/payment/code',
         component :  <Payment />
+    },
+    {
+        path : '/payment/details/:code',
+        component :  <PaymentDetails />
     },
     {
         path : '/payment/:priceId/redirect',

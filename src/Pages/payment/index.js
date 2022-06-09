@@ -1,6 +1,6 @@
 import React from 'react'
 // import StripeContainer from './stripeContainer'
-import Confirmation from './Confirmation'
+import PaymentCode from './PaymentCode'
 import Layout from '../../Components/Layout'
 import { EntryScreen, ChangeScreen } from 'Components/SplashScreens'
 
@@ -13,7 +13,7 @@ export default function Index(props) {
         <Layout>
             <EntryScreen/>
             <ChangeScreen />
-            <Confirmation />
+            <PaymentCode />
        </Layout>
         </>
     )

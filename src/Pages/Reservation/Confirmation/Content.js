@@ -28,8 +28,8 @@ export default function Confirmation(props) {
     const _store = useContext(Store)
     const storeInputs = _store?.state?.order
 
-    const [orderdata, setorderdata] = useState(false)
-    const [checkOut, setcheckOut] = useState(true)
+    // const [orderdata, setorderdata] = useState(false)
+    const [checkOut, setcheckOut] = useState(false)
     const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate()
@@ -92,7 +92,7 @@ export default function Confirmation(props) {
 
     return (
         <>
-            {checkOut && <OTP />}
+            {checkOut && <OTP setCheckout={setcheckOut} />}
             <div
                 style={{
                     background: ` url(${Ripple}), black`,
