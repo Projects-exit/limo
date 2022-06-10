@@ -28,12 +28,6 @@ export default function Confirmation(props) {
     const _store = useContext(Store)
     const storeInputs = _store?.state?.order
 
-    // const [orderdata, setorderdata] = useState(false)
-    const [checkOut, setcheckOut] = useState(false)
-    const [loading, setLoading] = useState(false)
-
-    const navigate = useNavigate()
-
 
     const [inputs, setInputs] = useState({
         from: '',
@@ -50,19 +44,45 @@ export default function Confirmation(props) {
 
     const { id } = useParams()
 
-    // const LoadPrice = async () => {
-    //     setLoading(true)
-    //     try {
+    const [loading, setLoading] = useState(false)
 
-    //         const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/strapi-stripe/getProduct/${id}`)
-    //         console.log(res)
-    //         setorderdata(res?.data)
+    const [error, setError] = useState(false)
 
-    //     } catch (ex) {
+    const [otp, setOtp] = useState('')
 
-    //     }
-    //     setLoading(false)
-    // }
+       // const [orderdata, setorderdata] = useState(false)
+    const [checkOut, setcheckOut] = useState(false)
+    // const [loading, setLoading] = useState(false)
+
+    const navigate = useNavigate()
+
+    const requestReservation = async () => {
+        setLoading(true)
+        try {
+
+            const { from, to, date, time, name, email, phone, info, } = storeInputs
+            const strapiStripeId = storeInputs?.car?.strapiStripeId
+
+            const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/reservation/createReservation`, {
+                from, to, date, time, name, email, phone, info, strapiStripeId
+            })
+
+            console.log(res?.data?.data)
+            const _opt = res?.data?.data?.order_number
+            setOtp(_opt)
+
+        } catch (ex) {
+            setError(true)
+        }
+        setLoading(false)
+
+    }
+
+    const handleBtnClick = () => {
+        setcheckOut(true)
+        requestReservation()
+    }
+
 
     const checkDataAndRedirect = () => {
         console.log("confirm", isAnyValueEmpty(inputs))
@@ -92,7 +112,7 @@ export default function Confirmation(props) {
 
     return (
         <>
-            {checkOut && <OTP setCheckout={setcheckOut} />}
+             {checkOut && <OTP setCheckout={setcheckOut} otp={otp} error={error} loading={loading} />}
             <div
                 style={{
                     background: ` url(${Ripple}), black`,
@@ -110,12 +130,12 @@ export default function Confirmation(props) {
                     <div className="h-[0.5px] w-full bg-copper mb-6"></div>
                     <JustAppear>
                         <div className='py-6 max-w-[1400px] mx-auto'>
-                            {loading ? <div className="w-fit mx-auto">
+                            {/* {loading ? <div className="w-fit mx-auto">
                                 <Loader height={60} width={60} />
                                 <div className="text-center text-copper text-sm font-bold pt-5">
                                     Loading...
                                 </div>
-                            </div> :
+                            </div> : */}
                                 <CardGrey >
                                     <div className="flex  flex-wrap justify-between">
                                         <div className='flex flex-col h-full justify-between'>
@@ -149,14 +169,14 @@ export default function Confirmation(props) {
                                                 {/* <button className="bg-copper ml-auto text-white px-5 py-2 rounded-2xl text-sm font-bold" type="button" id="SS_ProductCheckout" data-id={id} data-url="http://localhost:1337"> PAY NOW </button> */}
                                                 {/* <Link to={`${orderdata?.stripePriceId ? `/payment/${orderdata?.stripePriceId}/redirect` : '/payment'}`}> */}
                                                     <ButtonFilled
-                                                        onClick={() => setcheckOut(true)}
+                                                        onClick={() => handleBtnClick()}
                                                         label="REQUEST" className="text-center w-full lg:w-fit lg:ml-auto text-sm" />
                                                 {/* </Link> */}
                                             </div>
                                         </div>
                                     </div>
                                 </CardGrey>
-                            }
+                            {/* } */}
                         </div>
                     </JustAppear>
                 </div>

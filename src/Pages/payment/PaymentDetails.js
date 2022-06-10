@@ -6,7 +6,7 @@ import { SlideTop, SlideBottom, SlideLeft, SlideRight, JustAppear } from 'Compon
 
 import { Button, ButtonFilled } from 'Components/Button'
 import { CardGrey } from 'Components/Cards'
-
+import Layout from 'Components/Layout'
 
 import { CarDetail } from 'Pages/Fleet/CarDetail'
 import { _carsList } from 'Pages/_carsList'
@@ -51,10 +51,36 @@ export default function PaymentDetails(props) {
         setLoading(true)
         try {
 
-            const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/reservation/getReservation`, {
+            const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/reservation/getReservation`, {
                 code
             })
-            console.log(res) 
+            console.log(res?.data?.data)
+            const temp =  res?.data?.data
+            const {
+                pickup,
+                destination,
+                date,
+                time,
+                name,
+                email,
+                phone,
+                info,
+                strapi_stripe_product
+            } = temp
+            setInputs(prev => ({
+                ...prev, 
+                from : pickup,
+                to : destination,
+                date,
+                time,
+                name,
+                email,
+                phone,
+                info,
+                
+            }))
+            setorderdata(strapi_stripe_product)
+
 
         } catch (ex) {
 
@@ -71,10 +97,10 @@ export default function PaymentDetails(props) {
     //     }
     // }
 
-    // useEffect(() => {
-    //     LoadPrice()
-    //     checkDataAndRedirect()
-    // }, [])
+    useEffect(() => {
+        LoadPrice()
+        // checkDataAndRedirect()
+    }, [])
 
 
 
@@ -91,7 +117,7 @@ export default function PaymentDetails(props) {
 
     return (
         <>
-
+            <Layout>
             <div
                 style={{
                     background: ` url(${Ripple}), black`,
@@ -103,7 +129,7 @@ export default function PaymentDetails(props) {
                 <div className="container mx-auto">
                     <div className="text-center text-2xl text-white pb-6 font-bold">
                         <JustAppear>
-                            Confirm payment
+                            Checkout
                         </JustAppear>
                     </div>
                     <div className="h-[0.5px] w-full bg-copper mb-6"></div>
@@ -112,7 +138,7 @@ export default function PaymentDetails(props) {
                             {loading ? <div className="w-fit mx-auto">
                                 <Loader height={60}  width={60} />
                                 <div className="text-center text-copper text-sm font-bold pt-5">
-                                    Loading...
+                                    Validating...
                                 </div>
                             </div> :
                                 <CardGrey >
@@ -147,7 +173,7 @@ export default function PaymentDetails(props) {
                                             </div>
                                             <div className="pt-4 text-right">
                                                 {/* <button className="bg-copper ml-auto text-white px-5 py-2 rounded-2xl text-sm font-bold" type="button" id="SS_ProductCheckout" data-id={id} data-url="http://localhost:1337"> PAY NOW </button> */}
-                                               <Link to={`${orderdata?.stripePriceId ? `/payment/${orderdata?.stripePriceId}/redirect` : '/payment'}`}>
+                                               <Link to={`${orderdata?.stripePriceId ? `/payment/${orderdata?.stripePriceId}/redirect` : '/payment/code'}`}>
                                                 <ButtonFilled 
                                                     // onClick={() => setCheckOut(true)}
                                                     label="CHECK OUT" className="text-center w-full lg:w-fit lg:ml-auto text-sm" />
@@ -161,7 +187,7 @@ export default function PaymentDetails(props) {
                     </JustAppear>
                 </div>
             </div>
-
+            </Layout>
         </>
     )
 }

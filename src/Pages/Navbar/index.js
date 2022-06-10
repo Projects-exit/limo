@@ -25,7 +25,7 @@ export default function Index(props) {
                     </Link>
                 </div>
                 <div className='hidden lg:flex'>
-                    <div className="flex items-center text-sm">
+                    <div className="flex items-center text-sm font-bold">
                         <div className="text-copper mx-5">
                             <Link to="/fleet">
                                 Our fleet

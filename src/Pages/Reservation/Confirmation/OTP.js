@@ -11,42 +11,13 @@ import { Link } from 'react-router-dom'
 
 export default function OTP(props) {
 
-    const {setCheckout} = props
+    const {setCheckout, error, otp, loading} = props
 
-    const [loading, setLoading] = useState(true)
+    
 
-    const _store = useContext(Store)
-    const storeInputs = _store?.state?.order
-
-    const [error, setError] = useState(false)
-
-    const [otp, setOtp] = useState('')
-
-    const requestReservation = async () => {
-        setLoading(true)
-        try {
-
-            const { from, to, date, time, name, email, phone, info, } = storeInputs
-            const strapiStripeId = storeInputs?.car?.strapiStripeId
-
-            const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/reservation/createReservation`, {
-                from, to, date, time, name, email, phone, info, strapiStripeId
-            })
-
-            console.log(res?.data?.data)
-            const _opt = res?.data?.data?.order_number
-            setOtp(_opt)
-
-        } catch (ex) {
-            setError(true)
-        }
-        setLoading(false)
-
-    }
-
-    useEffect(() => {
-        requestReservation()
-    }, [])
+    // useEffect(() => {
+    //     requestReservation()
+    // }, [])
 
 
 

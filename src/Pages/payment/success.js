@@ -65,53 +65,21 @@ export default function Success(props) {
                                 {loading ? <div className="w-fit mx-auto">
                                     <Loader height={60} width={60} />
                                     <div className="text-center text-copper text-sm font-bold pt-5">
-                                        Verifying reservation...
+                                        Loading...
                                     </div>
                                 </div> :
-                                    <CardGrey >
+                                    <CardGrey className="mx-auto w-full max-w-xl" >
                                         <div className="p-3">
-                                            <div className="text-center text-white font-bold">
-                                                <div className="flex justify-center items-center text-2xl ">
-
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill='green' width="32" height="32" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1 17l-5-5.299 1.399-1.43 3.574 3.736 6.572-7.007 1.455 1.403-8 8.597z" /></svg>
-                                                    &nbsp;&nbsp;
-                                                    Reservation sucessfull
-                                                </div>
-                                                <div className="pt-4">
-                                                    {
-                                                        _car && <>
-                                                            <div className="text-center">
-                                                                <img src={_car?.image} alt="" className='mx-auto' />
-                                                            </div>
-                                                        </>}
-                                                </div>
-                                                <div className="pt-4 text-white">
-                                                    <div className="w-fit mx-auto">
-                                                        <div className="flex pt-2 text-left w-full">
-                                                            <div className="grow mr-16">From  </div>
-                                                            <div className="grow">: {metaData.from}</div>
-                                                        </div>
-                                                        <div className="flex pt-2 text-left  w-full">
-                                                            <div className="grow mr-16">to  </div>
-                                                            <div className="grow">: {metaData.to}</div>
-                                                        </div>
-                                                        <div className="flex pt-2 text-left  w-full">
-                                                            <div className="grow mr-16">date  </div>
-                                                            <div className="grow">: {(_date(metaData?.date))}</div>
-                                                        </div>
-                                                        <div className="flex pt-2 text-left  w-full">
-                                                            <div className="grow mr-16">time  </div>
-                                                            <div className="grow">: {metaData?.time}</div>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                </div>
-                                                <div className="pt-16">
+                                            <div className="text-center text-white font-bold text-2xl">
+                                                Thanks! <br/>
+                                                Payment succesfull!
+                                            </div>
+                                               
+                                                <div className="pt-12">
                                                     <Link to="/">
-                                                    <ButtonFilled label="Go to home" className="mx-auto w-fit" />
+                                                    <ButtonFilled label="HOME" className="mx-auto w-fit" />
                                                     </Link>
                                                 </div>
-                                            </div>
                                         </div>
                                     </CardGrey>
                                 }
