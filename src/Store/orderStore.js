@@ -1,5 +1,5 @@
 import React, {createContext, useReducer} from 'react';
-import { _carsList } from 'Pages/_carsList';
+// import { _carsList } from 'Pages/_carsList';
 
 const stateModal = {
     order : {
@@ -7,12 +7,13 @@ const stateModal = {
         to : '',
         date : '',
         time : '',
-        car : _carsList[0],
+        car : {},
         name : '',
         email : '',
         phone : '',
         info : ''
     },
+    _carsList : []
     
   }
   
@@ -29,6 +30,10 @@ const StateProvider = ( { children } ) => {
       switch(action.type) {
         case 'initOrder':
           newState = {...state, order : { ...state?.order, ...action?.payload} }
+          return newState;
+        case 'initCarList':
+          // console.log(action?.payload)
+          newState = {...state, _carsList : action?.payload, order : {...state?.order, car : action?.payload?.[0] || {} }}
           return newState;
         case 'clearState' :
           return {  ...stateModal  }

@@ -12,7 +12,7 @@ export default function Index(props) {
         <>
         <Layout>
             <EntryScreen/>
-            <ChangeScreen />
+            {/* <ChangeScreen /> */}
             <PaymentCode />
        </Layout>
         </>

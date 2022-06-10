@@ -16,7 +16,7 @@ export default function Hero(props) {
         <JustAppear>
             <div className="w-fit sm:mx-auto">
 
-                <Link to="/fleet" >
+                <Link to="/fleet/pick" >
                     <Button label="Reserve Now" className="text-center px-14 mr-auto lg:mx-auto w-fit cursor-pointer" />
                 </Link>
             </div>

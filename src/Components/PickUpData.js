@@ -6,6 +6,8 @@ import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import Outsideclick from 'Hooks/OutsideClick';
 
+import AutoCompleteInput from 'Components/AutoCompleteInput'
+
 export const PickUpData = (props) => {
 
     const { 
@@ -14,20 +16,26 @@ export const PickUpData = (props) => {
         className 
     } = props;
  
-
+    const [value, setValue] = useState(null);
 
     return (<>
         <div className="flex  flex-wrap w-full text-sm">
-            <InputText
+            
+
+            <AutoCompleteInput
                 className={`${className ? className : 'w-full lg:w-1/3 my-2 lg:my-0  px-3'} `}
-                value={inputs?.from}
                 placeholder="Pick up"
-                handleChange={(e) => handleChange({ "from": e.target.value })} />
-            <InputText
+                value={inputs?.from}
+                handleChange={(e) => handleChange({ "from": e })}
+            />
+            
+
+            <AutoCompleteInput
                 className={`${className ? className : 'w-full lg:w-1/3 my-2 lg:my-0  px-3'} `}
                 value={inputs?.to}
                 placeholder="Destination"
-                handleChange={(e) => handleChange({ "to": e.target.value })} />
+                handleChange={(e) => handleChange({ "to": e })} />
+           
             <div  className={`${className ? className : 'w-full lg:w-1/3 my-2 lg:my-0  px-3'} `}>
                 <DateTimeInput 
                     inputDate={inputs?.date}

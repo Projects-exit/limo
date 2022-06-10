@@ -35,18 +35,18 @@ export const CarCard = (props) => {
                         {item?.title}
                     </div>
                     <div className="py-2 text-xl font-bold text-copper">
-                        {item?.sub}
+                        {item?.description}
                     </div>
                 </div>
             </div>
             <div className="lg:h-64">
             <div className="flex justify-center ">
-                <img src={item?.image} />
+                <img src={item?.productImage} />
             </div>
             </div>
             <div className="flex flex-wrap justify-between items-center pt-16 lg:pt-0">
                 <CarDetail seat={item?.seat} luggage={item?.luggage} />
-                <div className='w-full lg:w-fit pt-6 lg:pt-0'>
+                <div className='w-full lg:w-fit pt-6 lg:pt-0 '>
                     {/* <Link to="/reservation"> */}
                     <ButtonFilled
                         onClick={() => updateCar(item)}

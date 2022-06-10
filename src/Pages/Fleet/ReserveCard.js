@@ -46,9 +46,9 @@ export default function ReserveCard(props) {
 
     return (
         <>
-            <div className="bg-black pt-44 pb-24">
+            <div className=" bg-black ">
                 <div className="container mx-auto w-full  ">
-                    <div className="bg-[#1A1A1A] p-3 rounded-3xl">
+                    <div className="bg-[#1A1A1A] p-3 rounded-3xl relative z-30">
                         <PickUpData inputs={inputs}  handleChange={handleChange} />
                     </div>
 

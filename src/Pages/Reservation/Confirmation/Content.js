@@ -64,7 +64,15 @@ export default function Confirmation(props) {
             const strapiStripeId = storeInputs?.car?.strapiStripeId
 
             const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/reservation/createReservation`, {
-                from, to, date, time, name, email, phone, info, strapiStripeId
+                from : from?.label, 
+                to : to?.label , 
+                date, 
+                time, 
+                name, 
+                email, 
+                phone, 
+                info, 
+                strapiStripeId
             })
 
             console.log(res?.data?.data)
@@ -136,7 +144,7 @@ export default function Confirmation(props) {
                                     Loading...
                                 </div>
                             </div> : */}
-                                <CardGrey >
+                                <CardGrey className="mx-auto max-w-[1100px]" >
                                     <div className="flex  flex-wrap justify-between">
                                         <div className='flex flex-col h-full justify-between'>
                                             <div>
@@ -144,11 +152,11 @@ export default function Confirmation(props) {
                                                     {storeInputs?.car?.title}
                                                 </div>
                                                 <div className="text-xl font-bold text-copper pt-2">
-                                                    {storeInputs?.car?.sub}
+                                                    {storeInputs?.car?.description}
                                                 </div>
                                             </div>
-                                            <div className="pt-4">
-                                                <img src={storeInputs?.car?.image} alt="" />
+                                            <div className="pt-4 max-w-sm">
+                                                <img src={storeInputs?.car?.productImage} alt="" />
                                             </div>
                                             <div className="pt-4 flex justify-between">
                                                 <CarDetail

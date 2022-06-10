@@ -9,7 +9,7 @@ import { CardGrey } from 'Components/Cards'
 
 
 import {CarDetail} from 'Pages/Fleet/CarDetail'
-import { _carsList } from 'Pages/_carsList'
+// import { _carsList } from 'Pages/_carsList'
 
 import { Store } from 'Store/orderStore'
 
@@ -25,7 +25,7 @@ export default function Reservation(props) {
     const _store = useContext(Store)
     const storeInputs = _store?.state?.order
 
-    const [checkOut, setCheckOut] = useState(false)
+    // const [checkOut, setCheckOut] = useState(false)
     const navigate = useNavigate()
 
     const [inputs, setInputs] = useState({
@@ -83,7 +83,9 @@ export default function Reservation(props) {
 
     const RedirectToConfirmationPage = async() => {
         try {
-            await Schema.validate(inputs)
+            const _inputs = {...inputs, from : inputs?.from?.label, to : inputs?.to?.label}
+            await Schema.validate(_inputs)
+            // console.log(_store)
             navigate(`/reservation/confirmation/${storeInputs?.car?.strapiStripeId}`)
         } catch(ex) {
             setError({ message: ex?.errors ?? 'Error' })
@@ -93,6 +95,12 @@ export default function Reservation(props) {
     useEffect(() =>{
         updateStore()
     }, [inputs])
+
+    useEffect(() => {
+        if(!storeInputs?.car?.id) {
+            navigate('/fleet/pick')
+        }
+    }, [])
 
     // console.log(_store?.state)
 
@@ -137,17 +145,17 @@ export default function Reservation(props) {
                                                 {storeInputs?.car?.title}
                                         </div>
                                         <div className="text-xl font-bold text-copper pt-2">
-                                                {storeInputs?.car?.sub}
+                                                {storeInputs?.car?.description}
                                         </div>
                                    </div>
                                    <div className="pt-4">
-                                        <img src={storeInputs?.car?.image} alt="" />
+                                        <img src={storeInputs?.car?.productImage} alt="" />
                                    </div>
                                    <div className="pt-4 flex justify-between">
                                        <CarDetail 
                                             seat={storeInputs?.car?.seat} 
                                             luggage={storeInputs?.car?.luggage} />
-                                       <Link to="/fleet">
+                                       <Link to="/fleet/pick">
                                             <Button  label={<>Change&nbsp;Car</>} className="text-copper cursor-pointer text-sm"/>
                                        </Link>
                                    </div>

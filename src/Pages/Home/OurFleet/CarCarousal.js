@@ -13,7 +13,7 @@ import { ReactComponent as PersonIcon } from 'Assets/Misc/personIcon.svg'
 
 import { PageBubble } from './PageBubble';
 import { ButtonFilled } from 'Components/Button';
-import { _carsList } from '../../_carsList';
+// import { _carsList } from '../../_carsList';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { Store } from 'Store/orderStore'
@@ -50,11 +50,15 @@ export const swipePower = (offset, velocity) => {
 
 export const CarCarousal = (prosp) => {
 
+    const _store = useContext(Store)
+    const _carsList = _store?.state?._carsList
+
+    // console.log(_carsList)
+
 
     const [[page, direction], setPage] = useState([0, 0]);
     const imageIndex = (page) => wrap(0, _carsList.length, page);
 
-    const _store = useContext(Store)
     const navigate = useNavigate()
 
 
@@ -110,7 +114,7 @@ export const CarCarousal = (prosp) => {
                     </div>
                     <div className="text-center py-2 text-xl text-white font-bold text-copper">
                     <SlideBottom>
-                        {_carsList[imageIndex(page)]?.sub}
+                        {_carsList[imageIndex(page)]?.description}
                     </SlideBottom>
                     </div>
                 </div>
@@ -119,25 +123,25 @@ export const CarCarousal = (prosp) => {
                         {/* <AnimatePresence initial={false} exitBeforeEnter> */}
                             <div className="w-1  -translate-x-">
                                 <motion.img
-                                    key={_carsList[imageIndex(page + 2)]?.sub}
+                                    key={_carsList[imageIndex(page + 2)]?.id}
                                     layoutId={_carsList[imageIndex(page + 2)]?.id}
                                     animate={{ opacity: 1, y: 0, x: -600 }}
                                     // initial={{ opacity: 0, y: 0, x: direction > 0 ? -400 : 0 }}
                                     // exit={{ opacity: 0, x: -600 }}
                                     // transition={{ duration: 0.15 }}
                                     className=' '
-                                    src={_carsList[imageIndex(page + 2)]?.image} />
+                                    src={_carsList[imageIndex(page + 2)]?.productImage} />
                             </div>
                             <div className="w-1/3 -translate-x-" onClick={() => paginate(-1)} >
                                 <motion.img
-                                    key={_carsList[imageIndex(page + 1)]?.sub}
+                                    key={_carsList[imageIndex(page + 1)]?.id}
                                     layoutId={_carsList[imageIndex(page + 1)]?.id}
                                     animate={{ opacity: 1, y: 0, x: -200 }}
                                     // initial={{ opacity: 0, y: 0, x: direction > 0 ? -400 : 0 }}
                                     // exit={{ opacity: 0, x: -600 }}
                                     // transition={{ duration: 0.15 }}
                                     className=' '
-                                    src={_carsList[imageIndex(page + 1)]?.image} />
+                                    src={_carsList[imageIndex(page + 1)]?.productImage} />
                             </div>
 
                             <div className="prev " onClick={() => paginate(-1)}>
@@ -145,13 +149,13 @@ export const CarCarousal = (prosp) => {
                             </div>
                             <div className='w-/3'>
                                 <motion.img
-                                    key={_carsList[imageIndex(page)]?.sub}
+                                    key={_carsList[imageIndex(page)]?.id}
                                     layoutId={_carsList[imageIndex(page)]?.id}
                                     animate={{ opacity: 1, y: 0, x: 0 }}
                                     // initial={{ opacity: 0, y: 0, x: 0 }}
                                     // exit={{ opacity: 0, x: 0 }}
                                     className=' '
-                                    src={_carsList[imageIndex(page)]?.image} />
+                                    src={_carsList[imageIndex(page)]?.productImage} />
                             </div>
                             <div className="next " onClick={() => paginate(1)}>
                                 <svg fill='white' className='ml-12' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z" /></svg>
@@ -159,24 +163,24 @@ export const CarCarousal = (prosp) => {
                             <div className="w-1/3 translate-x-" onClick={() => paginate(1)}>
 
                                 <motion.img
-                                    key={_carsList[imageIndex(page - 1)]?.sub}
+                                    key={_carsList[imageIndex(page - 1)]?.id}
                                     layoutId={_carsList[imageIndex(page - 1)]?.id}
                                     animate={{ opacity: 1, y: 0, x: 200 }}
                                     // initial={{ opacity: 0, y: 0, x: direction > 0 ? -200 : 400 }}
                                     // exit={{ opacity: 0, x: 0 }}
                                     className=' '
-                                    src={_carsList[imageIndex(page - 1)]?.image} />
+                                    src={_carsList[imageIndex(page - 1)]?.productImage} />
                             </div>
                             <div className="w-1 translate-x-">
 
                                 <motion.img
-                                    key={_carsList[imageIndex(page - 2)]?.sub}
+                                    key={_carsList[imageIndex(page - 2)]?.id}
                                     layoutId={_carsList[imageIndex(page - 2)]?.id}
                                     animate={{ opacity: 1, y: 0, x: 600 }}
                                     // initial={{ opacity: 0, y: 0, x: direction > 0 ? -200 : 400 }}
                                     // exit={{ opacity: 0, x: 0 }}
                                     className=' '
-                                    src={_carsList[imageIndex(page - 2)]?.image} />
+                                    src={_carsList[imageIndex(page - 2)]?.productImage} />
                             </div>
                         {/* </AnimatePresence> */}
 
@@ -206,7 +210,7 @@ export const CarCarousal = (prosp) => {
                     </div>
                     </SlideRight>
                 </div>
-                <div className="pt-12 text-center">
+                <div className="pt-12 text-center relative z-40">
                     <SlideTop>
 
                     {/* <Link to="/fleet"> */}

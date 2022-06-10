@@ -29,11 +29,11 @@ export const DisplayDetails = ({ inputs }) => {
                 </div>
                 <div className='flex text-white py-2'>
                     <div className='w-24 font-bold text-copper text-right'> Pick-up :</div>
-                    <div className='grow pl-3'> {inputs?.from} </div>
+                    <div className='grow pl-3'> {inputs?.from?.label} </div>
                 </div>
                 <div className='flex text-white py-2'>
                     <div className='w-24 font-bold text-copper text-right'> Destination :</div>
-                    <div className='grow pl-3'> {inputs?.to} </div>
+                    <div className='grow pl-3'> {inputs?.to?.label} </div>
                 </div>
                 <div className='flex text-white py-2'>
                     <div className='w-24 font-bold text-copper text-right'> date :</div>

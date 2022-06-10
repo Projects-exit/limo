@@ -21,6 +21,10 @@ const routesList = [
         component :  <Fleet />
     },
     {
+        path : '/fleet/:variant',
+        component :  <Fleet />
+    },
+    {
         path : '/reservation',
         component :  <Reservation />
     },

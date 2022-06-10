@@ -142,20 +142,20 @@ export default function PaymentDetails(props) {
                                 </div>
                             </div> :
                                 <CardGrey >
-                                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-24">
+                                    <div className="flex flex-wrap justify-between">
                                         <div className='flex flex-col h-full justify-between'>
                                             <div>
                                                 <div className="text-2xl text-white font-bold">
                                                     {storeInputs?.car?.title}
                                                 </div>
                                                 <div className="text-xl font-bold text-copper pt-2">
-                                                    {storeInputs?.car?.sub}
+                                                    {storeInputs?.car?.description}
                                                 </div>
                                             </div>
-                                            <div className="pt-4">
-                                                <img src={storeInputs?.car?.image} alt="" />
+                                            <div className="pt-4 max-w-sm">
+                                                <img src={storeInputs?.car?.productImage} alt="" />
                                             </div>
-                                            <div className="pt-4 flex justify-between">
+                                            <div className="py-4 flex justify-between">
                                                 <CarDetail
                                                     seat={storeInputs?.car?.seat}
                                                     luggage={storeInputs?.car?.luggage} />
@@ -164,14 +164,14 @@ export default function PaymentDetails(props) {
                                        </Link> */}
                                             </div>
                                         </div>
-                                        <div>
+                                        <div className="lg:w-full xl:w-fit max-w-xl">
                                             <DisplayDetails inputs={inputs} />
                                         </div>
-                                        <div className='flex flex-col h-full justify-between'>
-                                            <div>
+                                        <div className='flex flex-col  justify-between w-full lg:w-fit'>
+                                            <div className="">
                                                 <DisplayPrice price={orderdata?.price} />
                                             </div>
-                                            <div className="pt-4 text-right">
+                                            <div className="py-4 text-right">
                                                 {/* <button className="bg-copper ml-auto text-white px-5 py-2 rounded-2xl text-sm font-bold" type="button" id="SS_ProductCheckout" data-id={id} data-url="http://localhost:1337"> PAY NOW </button> */}
                                                <Link to={`${orderdata?.stripePriceId ? `/payment/${orderdata?.stripePriceId}/redirect` : '/payment/code'}`}>
                                                 <ButtonFilled 
@@ -210,29 +210,29 @@ const DisplayDetails = ({ inputs }) => {
 
     return (
         <>
-            <div className="div w-full">
+            <div className="div w-full py-12 lg:py-0 text-sm">
                 <div className="font-bold text-white py-3">
                     Booking details
                 </div>
-                <div className='flex text-white py-1'>
-                    <div className='w-32 font-bold text-copper'> Name </div>
-                    <div className='grow '>: {inputs?.name} </div>
+                <div className='flex text-white py-2'>
+                    <div className='w-24 font-bold text-copper text-right'> Name :</div>
+                    <div className='grow pl-3'> {inputs?.name} </div>
                 </div>
-                <div className='flex text-white py-1'>
-                    <div className='w-32 font-bold text-copper'> From </div>
-                    <div className='grow '>: {inputs?.from} </div>
+                <div className='flex text-white py-2'>
+                    <div className='w-24 font-bold text-copper text-right'> Pick-up :</div>
+                    <div className='grow pl-3'> {inputs?.from} </div>
                 </div>
-                <div className='flex text-white py-1'>
-                    <div className='w-32 font-bold text-copper'> To </div>
-                    <div className='grow '>: {inputs?.to} </div>
+                <div className='flex text-white py-2'>
+                    <div className='w-24 font-bold text-copper text-right'> Destination :</div>
+                    <div className='grow pl-3'> {inputs?.to} </div>
                 </div>
-                <div className='flex text-white py-1'>
-                    <div className='w-32 font-bold text-copper'> date </div>
-                    <div className='grow '>: {`${_date(inputs?.date)}`} </div>
+                <div className='flex text-white py-2'>
+                    <div className='w-24 font-bold text-copper text-right'> date :</div>
+                    <div className='grow pl-3'> {`${_date(inputs?.date)}`} </div>
                 </div>
-                <div className='flex text-white py-1'>
-                    <div className='w-32 font-bold text-copper'> Time </div>
-                    <div className='grow '>: {inputs?.time} </div>
+                <div className='flex text-white py-2'>
+                    <div className='w-24 font-bold text-copper text-right'> Time :</div>
+                    <div className='grow pl-3'> {inputs?.time} </div>
                 </div>
                 {/* <div className="font-bold text-white py-3">
                     User details
@@ -246,8 +246,8 @@ const DisplayDetails = ({ inputs }) => {
 const DisplayPrice = ({ price }) => {
 
     return (
-        <div className="text-white py-2 text-right">
-            <div className="text-sm text-copper">
+        <div className="text-white  text-right py-12 lg:py-0">
+            <div className="text-sm ">
                 Price
             </div>
             <div className='text-6xl  font-bold'>

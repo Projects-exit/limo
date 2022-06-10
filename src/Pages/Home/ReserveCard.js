@@ -64,7 +64,7 @@ export const ReserveCard = (props) => {
                                     inputs={inputs} />
                             </div>
                             <div className="px-3 w-full lg:w-fit ">
-                                <Link to="/fleet">
+                                <Link to="/fleet/pick">
                                     <ButtonFilled label={<>Reserve&nbsp;now</>} className="mr-0 ml-auto w-full lg:w-fit  text-sm my-2 lg:my-0" />
                                 </Link>
                             </div>
