@@ -6,11 +6,14 @@ import InitCars from 'Hooks/initCars';
 
 export default function Index(props) {
   
-    const {initCars} = InitCars()
+
+  const {initCars} = InitCars()
   
-    useEffect(() => {
-      initCars()
-    }, [])
+  useEffect(() => {
+    initCars()
+  }, [])
+
+    
   
       return (
           <>
@@ -20,4 +23,4 @@ export default function Index(props) {
           </>
       )
   }
-  
+

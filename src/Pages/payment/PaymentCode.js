@@ -66,8 +66,7 @@ export default function Confirmation(props) {
                             </div> :
                                 <CardGrey className="w-full lg:max-w-xl mx-auto" >
                                         <div className="py-4 text-white font-bold text-center">
-                                        Enter payment code that <br/>
-                                        we privides you
+                                        Enter the Payment code  that <br/> we sent you.
                                         </div>
                                         <div className="py-4 w-fit mx-auto">
                                             <OtpInput

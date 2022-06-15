@@ -71,8 +71,9 @@ export default function Success(props) {
                                     <CardGrey className="mx-auto w-full max-w-xl" >
                                         <div className="p-3">
                                             <div className="text-center text-white font-bold text-2xl">
-                                                Thanks! <br/>
-                                                Payment succesfull!
+                                            Congratulations, <br/> 
+                                            you successfully booked a car!
+
                                             </div>
                                                
                                                 <div className="pt-12">

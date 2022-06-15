@@ -4,7 +4,7 @@ import React, {useContext} from 'react'
 import { ReactComponent as Ripple } from 'Assets/Bg/ripple.svg'
 
 import { CarCard } from './CarCard'
-import { SlideLeft, SlideRight } from 'Components/SlideAnimation'
+import { SlideBottom, SlideLeft, SlideRight } from 'Components/SlideAnimation'
 
 import  ReserveCard  from './ReserveCard'
 import { useParams } from 'react-router-dom'
@@ -65,7 +65,10 @@ const ReserverPage = () => {
         <>
             <div className="pt-24 ">
                     <div className="text-8xl text-grey-l font-bold translate-y-14">
+                        <SlideRight>
+
                         OUR FLEET
+                        </SlideRight>
                     </div>
                 </div>
                 <div className="relative hidden sm:block w-full h-2  z-40">

@@ -48,16 +48,14 @@ export default function OTP(props) {
                                     :
                                     <div>
                                         <div className=" text-2xl font-bold text-white">
-                                            Thanks! <br />
-                                            We will contact<br />
-                                            You soon!
+                                            We will contact you soon!
                                         </div>
-                                        <div className="pt-8 text-white">
+                                        {/* <div className="pt-8 text-white">
                                             Your order number:
                                         </div>
                                         <div className="py-2 text-copper text-2xl font-bold">
                                             {otp}
-                                        </div>
+                                        </div> */}
                                         <div className="pt-8">
                                             <Link to="/">
                                             <ButtonFilled label="HOME" className="text-center w-fit mx-auto text-sm" />

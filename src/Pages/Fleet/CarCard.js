@@ -6,6 +6,7 @@ import { CardGrey } from 'Components/Cards';
 import { CarDetail } from './CarDetail';
 
 import { Store } from 'Store/orderStore'
+import { JustAppear, SlideBottom } from 'Components/SlideAnimation';
 
 export const CarCard = (props) => {
 
@@ -27,6 +28,7 @@ export const CarCard = (props) => {
     }
 
     return (
+        <SlideBottom>
         <CardGrey >
 
             <div className="relative h-24 lg:h-12">
@@ -56,6 +58,7 @@ export const CarCard = (props) => {
             </div>
 
         </CardGrey>
+        </SlideBottom>
     );
 };
 

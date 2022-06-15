@@ -18,8 +18,8 @@ export default function Index(props) {
     }, [])
     return (
         <>
-        <EntryScreen/>
-        <ChangeScreen />
+        {/* <EntryScreen/> */}
+        {/* <ChangeScreen /> */}
         <Navbar />
         
         <Reservation/>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
-
 import { Link, useNavigate , useParams} from 'react-router-dom'
+
 import { SlideTop, SlideBottom, SlideLeft, SlideRight, JustAppear } from 'Components/SlideAnimation'
 
 import { Button, ButtonFilled } from 'Components/Button'
@@ -20,6 +20,8 @@ import Ripple from 'Assets/Bg/ripple.svg'
 import { Loader } from 'Components/Loader'
 import { format } from 'date-fns'
 import { isAnyValueEmpty } from 'Hooks/utils'
+
+const qs = require('qs');
 
 export default function PaymentDetails(props) {
 
@@ -40,12 +42,15 @@ export default function PaymentDetails(props) {
         name: '',
         email: '',
         phone: '',
-        info: ''
+        info: '',
+        reservationId : ''
     })
 
 
 
     const { code } = useParams()
+
+    const [error, setError] = useState('')
 
     const LoadPrice = async () => {
         setLoading(true)
@@ -57,6 +62,7 @@ export default function PaymentDetails(props) {
             console.log(res?.data?.data)
             const temp =  res?.data?.data
             const {
+                id : reservationId,
                 pickup,
                 destination,
                 date,
@@ -65,7 +71,8 @@ export default function PaymentDetails(props) {
                 email,
                 phone,
                 info,
-                strapi_stripe_product
+                strapi_stripe_product,
+                quotePrice
             } = temp
             setInputs(prev => ({
                 ...prev, 
@@ -77,15 +84,32 @@ export default function PaymentDetails(props) {
                 email,
                 phone,
                 info,
+                reservationId,
+                quotePrice
                 
             }))
             setorderdata(strapi_stripe_product)
 
 
         } catch (ex) {
-
+            
+            const error = ex?.response?.data?.error?.message
+            setError(error ? error : "Something went wrong!")
         }
         setLoading(false)
+    }
+
+    const onBtnClick = () => {
+        const query = qs.stringify({
+            ...inputs,
+            strapiStripeId : orderdata?.id,
+            payment_code : code
+            
+          }, {
+            encodeValuesOnly: true,
+          });
+
+        navigate(`${orderdata?.stripePriceId ? `/payment/${orderdata?.stripePriceId}/redirect?${query}` : '/payment/code'}`)
     }
 
 
@@ -141,7 +165,23 @@ export default function PaymentDetails(props) {
                                     Validating...
                                 </div>
                             </div> :
-                                <CardGrey >
+                                <>
+                                {
+                                    error ? 
+                                    <>
+                                     <CardGrey className="max-w-sm mx-auto" >
+                                        <div className="py-4 text-center text-red-500">
+                                            {error}
+                                        </div>
+                                        <Link to="/payment/code">
+                                        <ButtonFilled label="Retry" className="text-center w-full mx-auto w-fit text-sm" />
+                                        </Link>
+                                     </CardGrey>
+                                    </> 
+                                    
+                                    :
+
+                                    <CardGrey >
                                     <div className="flex flex-wrap justify-between">
                                         <div className='flex flex-col h-full justify-between'>
                                             <div>
@@ -169,19 +209,22 @@ export default function PaymentDetails(props) {
                                         </div>
                                         <div className='flex flex-col  justify-between w-full lg:w-fit'>
                                             <div className="">
-                                                <DisplayPrice price={orderdata?.price} />
+                                                <DisplayPrice price={inputs?.quotePrice} />
                                             </div>
                                             <div className="py-4 text-right">
                                                 {/* <button className="bg-copper ml-auto text-white px-5 py-2 rounded-2xl text-sm font-bold" type="button" id="SS_ProductCheckout" data-id={id} data-url="http://localhost:1337"> PAY NOW </button> */}
-                                               <Link to={`${orderdata?.stripePriceId ? `/payment/${orderdata?.stripePriceId}/redirect` : '/payment/code'}`}>
+                                               {/* <Link to={`${orderdata?.stripePriceId ? `/payment/${orderdata?.stripePriceId}/redirect` : '/payment/code'}`}> */}
                                                 <ButtonFilled 
-                                                    // onClick={() => setCheckOut(true)}
+                                                    onClick={() => onBtnClick()}
                                                     label="CHECK OUT" className="text-center w-full lg:w-fit lg:ml-auto text-sm" />
-                                                </Link>
+                                                {/* </Link> */}
                                             </div>
                                         </div>
                                     </div>
                                 </CardGrey>
+                                    
+                                }
+                                </>
                             }
                         </div>
                     </JustAppear>

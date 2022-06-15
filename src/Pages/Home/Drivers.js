@@ -16,18 +16,18 @@ export default function Drivers(props) {
 
     const _driverQuality = [
         {
-            title: 'Discreet',
-            description: "Confidentially non-disclosure agreements are signed and enforced for passenger privacy and peace-of-mind.",
+            title: 'PRIVACY',
+            description: "Your comfort and privacy are our priority; that is why all our chauffeurs sign and rigorously follow non-disclosure agreements so you can enjoy a stress-free ride.",
 
         },
         {
-            title: 'Professional',
-            description: "Classroom trained in proper etiquette to interact in a business professional manner at all times for the duration the ride.",
+            title: 'QUALITY',
+            description: "Our professional fleet staff is trained in all appropriate protocols and is ready to deliver exceptional service every step of the way.",
 
         },
         {
-            title: 'Safe',
-            description: "On the road training is taught and reinforced with safe driving techniques along with proper Covid-19 protocols.",
+            title: 'SAFETY',
+            description: "Our chauffeurs complete mandatory hands-on training and strictly follow COVID-19 regulations to ensure your safety on the road.",
 
         },
     ]

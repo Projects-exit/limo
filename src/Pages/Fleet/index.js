@@ -19,7 +19,7 @@ export default function Index(props) {
     }, [])
     return (
         <>
-            <EntryScreen />
+            {/* <EntryScreen /> */}
             {/* <ChangeScreen /> */}
             <Navbar />
             {/* <ReserveCard /> */}

@@ -11,8 +11,6 @@ import { StateProvider as OrderProvider } from 'Store/orderStore'
 
 function App() {
 
-
-
   return (
     <div className="App">
       <OrderProvider>

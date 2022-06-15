@@ -51,7 +51,9 @@ export const swipePower = (offset, velocity) => {
 export const CarCarousal = (prosp) => {
 
     const _store = useContext(Store)
-    const _carsList = _store?.state?._carsList
+    let _carsList = _store?.state?._carsList
+
+     _carsList = _carsList.sort((a, b) => a.id - b.id)
 
     // console.log(_carsList)
 
