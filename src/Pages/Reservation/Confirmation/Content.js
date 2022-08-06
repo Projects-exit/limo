@@ -61,7 +61,7 @@ export default function Confirmation(props) {
         try {
 
             const { from, to, date, time, name, email, phone, info, } = storeInputs
-            const strapiStripeId = storeInputs?.car?.strapiStripeId
+            const car = storeInputs?.car?.id
 
             const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/reservation/createReservation`, {
                 from : from?.label, 
@@ -72,7 +72,7 @@ export default function Confirmation(props) {
                 email, 
                 phone, 
                 info, 
-                strapiStripeId
+                car
             })
 
             console.log(res?.data?.data)
@@ -149,14 +149,14 @@ export default function Confirmation(props) {
                                         <div className='flex flex-col h-full justify-between'>
                                             <div>
                                                 <div className="text-2xl text-white font-bold">
-                                                    {storeInputs?.car?.title}
+                                                    {storeInputs?.car?.brand}
                                                 </div>
                                                 <div className="text-xl font-bold text-copper pt-2">
-                                                    {storeInputs?.car?.description}
+                                                    {storeInputs?.car?.model}
                                                 </div>
                                             </div>
                                             <div className="pt-4 max-w-sm">
-                                                <img src={storeInputs?.car?.productImage} alt="" />
+                                                <img src={storeInputs?.car?.image} alt="" />
                                             </div>
                                             <div className="pt-4 flex justify-between">
                                                 <CarDetail

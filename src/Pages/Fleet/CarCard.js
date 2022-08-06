@@ -34,16 +34,16 @@ export const CarCard = (props) => {
             <div className="relative h-24 lg:h-12">
                 <div className="absolute top-0 left-0">
                     <div className="text-2xl text-shite font-bold  text-white">
-                        {item?.title}
+                        {item?.brand}
                     </div>
                     <div className="py-2 text-xl font-bold text-copper">
-                        {item?.description}
+                        {item?.model}
                     </div>
                 </div>
             </div>
             <div className="lg:h-64">
             <div className="flex justify-center ">
-                <img src={item?.productImage} />
+                <img src={item?.image} />
             </div>
             </div>
             <div className="flex flex-wrap justify-between items-center pt-16 lg:pt-0">

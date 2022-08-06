@@ -111,12 +111,12 @@ export const CarCarousal = (prosp) => {
                     </div>
                     <div className="text-center py-2 text-2xl text-white font-bold">
                         <SlideTop>
-                        {_carsList[imageIndex(page)]?.title}
+                        {_carsList[imageIndex(page)]?.brand}
                         </SlideTop>
                     </div>
                     <div className="text-center py-2 text-xl text-white font-bold text-copper">
                     <SlideBottom>
-                        {_carsList[imageIndex(page)]?.description}
+                        {_carsList[imageIndex(page)]?.model}
                     </SlideBottom>
                     </div>
                 </div>
@@ -132,7 +132,7 @@ export const CarCarousal = (prosp) => {
                                     // exit={{ opacity: 0, x: -600 }}
                                     // transition={{ duration: 0.15 }}
                                     className=' '
-                                    src={_carsList[imageIndex(page + 2)]?.productImage} />
+                                    src={_carsList[imageIndex(page + 2)]?.image} />
                             </div>
                             <div className="w-1/3 -translate-x-" onClick={() => paginate(-1)} >
                                 <motion.img
@@ -143,7 +143,7 @@ export const CarCarousal = (prosp) => {
                                     // exit={{ opacity: 0, x: -600 }}
                                     // transition={{ duration: 0.15 }}
                                     className=' '
-                                    src={_carsList[imageIndex(page + 1)]?.productImage} />
+                                    src={_carsList[imageIndex(page + 1)]?.image} />
                             </div>
 
                             <div className="prev " onClick={() => paginate(-1)}>
@@ -157,7 +157,7 @@ export const CarCarousal = (prosp) => {
                                     // initial={{ opacity: 0, y: 0, x: 0 }}
                                     // exit={{ opacity: 0, x: 0 }}
                                     className=' '
-                                    src={_carsList[imageIndex(page)]?.productImage} />
+                                    src={_carsList[imageIndex(page)]?.image} />
                             </div>
                             <div className="next " onClick={() => paginate(1)}>
                                 <svg fill='white' className='ml-12' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z" /></svg>
@@ -171,7 +171,7 @@ export const CarCarousal = (prosp) => {
                                     // initial={{ opacity: 0, y: 0, x: direction > 0 ? -200 : 400 }}
                                     // exit={{ opacity: 0, x: 0 }}
                                     className=' '
-                                    src={_carsList[imageIndex(page - 1)]?.productImage} />
+                                    src={_carsList[imageIndex(page - 1)]?.image} />
                             </div>
                             <div className="w-1 translate-x-">
 
@@ -182,7 +182,7 @@ export const CarCarousal = (prosp) => {
                                     // initial={{ opacity: 0, y: 0, x: direction > 0 ? -200 : 400 }}
                                     // exit={{ opacity: 0, x: 0 }}
                                     className=' '
-                                    src={_carsList[imageIndex(page - 2)]?.productImage} />
+                                    src={_carsList[imageIndex(page - 2)]?.image} />
                             </div>
                         {/* </AnimatePresence> */}
 

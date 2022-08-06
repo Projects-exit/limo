@@ -142,14 +142,14 @@ export default function Reservation(props) {
                                <div className='flex flex-col h-full justify-between'>
                                    <div>
                                         <div className="text-2xl text-white font-bold">
-                                                {storeInputs?.car?.title}
+                                                {storeInputs?.car?.brand}
                                         </div>
                                         <div className="text-xl font-bold text-copper pt-2">
-                                                {storeInputs?.car?.description}
+                                                {storeInputs?.car?.model}
                                         </div>
                                    </div>
                                    <div className="pt-4">
-                                        <img src={storeInputs?.car?.productImage} alt="" />
+                                        <img src={storeInputs?.car?.image} alt="" />
                                    </div>
                                    <div className="pt-4 flex justify-between">
                                        <CarDetail 
