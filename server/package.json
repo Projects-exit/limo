@@ -1,0 +1,17 @@
+{
+  "name": "bklik",
+  "version": "1.0.0",
+  "description": "",
+  "main": "client.js",
+  "dependencies": {
+    "express": "^4.17.3",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "pm2 start client.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
