@@ -57,6 +57,7 @@ export default function Confirmation(props) {
     const navigate = useNavigate()
 
     const requestReservation = async () => {
+        setError(false)
         setLoading(true)
         try {
 

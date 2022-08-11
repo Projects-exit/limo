@@ -86,7 +86,7 @@ export default function Reservation(props) {
             const _inputs = {...inputs, from : inputs?.from?.label, to : inputs?.to?.label}
             await Schema.validate(_inputs)
             // console.log(_store)
-            navigate(`/reservation/confirmation/${storeInputs?.car?.strapiStripeId}`)
+            navigate(`/reservation/confirmation/${storeInputs?.car?.id}`)
         } catch(ex) {
             setError({ message: ex?.errors ?? 'Error' })
         }
