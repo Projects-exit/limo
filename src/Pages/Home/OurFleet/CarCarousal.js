@@ -188,8 +188,8 @@ export const CarCarousal = (prosp) => {
 
                     </>
                 </div>
-
-                <PageBubble page={page} imageIndex={imageIndex} />
+                
+                <PageBubble page={page} imageIndex={imageIndex}  />
                 <div className="flex justify-center mt-12 items-center text-2xl">
                     <SlideLeft>
                     <div className='mx-4 flex items-center'>

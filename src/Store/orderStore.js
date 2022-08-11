@@ -35,6 +35,8 @@ const StateProvider = ( { children } ) => {
           // console.log(action?.payload)
           newState = {...state, _carsList : action?.payload, order : {...state?.order, car : action?.payload?.[0] || {} }}
           return newState;
+        case 'clearOrder' :
+          return { ...state, order : {...stateModal.order}  }
         case 'clearState' :
           return {  ...stateModal  }
         default:

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { Button, ButtonFilled } from 'Components/Button'
 
@@ -13,6 +13,13 @@ export default function MobileMenu(props) {
     const IconClose = () => <svg fill='currentColor' width="24" height="24" viewBox="0 0 24 24"><path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z" /></svg>;
 
     const Linkwrapper = ({ children }) => <div className=" my-12">{children}</div>
+
+    const navigate = useNavigate()
+
+    const GotoPage = (page) => {
+        navigate(page)
+        setOpen(false)
+    }
 
 
     return (
@@ -34,26 +41,26 @@ export default function MobileMenu(props) {
 
                         <div className="py-10 text-copper font-bold text-center text-2xl">
                             <Linkwrapper>
-                                <Link to="/fleet" >
+                                <div className='cursor-pointer' onClick={()=>GotoPage("/fleet")}  >
                                     Our fleet
-                                </Link>
+                                </div>
                             </Linkwrapper>
                             <Linkwrapper>
-                                <Link to="/#drivers">
+                                <div className='cursor-pointer' onClick={()=>GotoPage("/#drivers")} >
                                     Our drivers
-                                </Link>
+                                </div>
                             </Linkwrapper>
                             <Linkwrapper>
-                                <Link to="/privacy">
+                                <div className='cursor-pointer' onClick={()=>GotoPage("/privacy-policy")} >
                                     Privacy policy
-                                </Link>
+                                </div>
                             </Linkwrapper>
                         </div>
                         <div className="pb-4">
-                            <ButtonFilled label="PAYMENT" className="w-full text-center" />
+                            <ButtonFilled onClick={()=> GotoPage('/payment/code')} label="PAYMENT" className="w-full text-center" />
                         </div>
                         <div className="py-4">
-                            <Button label="RESERVE NOW" className="w-full text-center" />
+                            <Button onClick={()=> GotoPage('/fleet/pick')} label="RESERVE NOW" className="w-full text-center" />
                         </div>
                     </div>
 

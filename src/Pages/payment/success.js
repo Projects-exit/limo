@@ -8,7 +8,7 @@ import { ButtonFilled } from 'Components/Button';
 import { Loader } from 'Components/Loader'
 import { CardGrey } from 'Components/Cards'
 import { JustAppear } from 'Components/SlideAnimation';
-import { _carsList } from 'Pages/_carsList';
+// import { _carsList } from 'Pages/_carsList';
 import { format } from 'date-fns';
 
 
@@ -23,7 +23,7 @@ export default function Success(props) {
     const [loading, setloading] = useState('')
     const [metaData, setmetaData] = useState({})
 
-    const _car = _carsList.find(item => item?.strapiStripeId === metaData?.strapiStripeId)
+    // const _car = _carsList.find(item => item?.strapiStripeId === metaData?.strapiStripeId)
 
     const getCheckOutStatus = async () => {
         setloading(true)

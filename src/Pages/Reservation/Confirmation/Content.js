@@ -9,7 +9,7 @@ import { CardGrey } from 'Components/Cards'
 
 
 import { CarDetail } from 'Pages/Fleet/CarDetail'
-import { _carsList } from 'Pages/_carsList'
+// import { _carsList } from 'Pages/_carsList'
 
 import { Store } from 'Store/orderStore'
 
@@ -79,6 +79,10 @@ export default function Confirmation(props) {
             console.log(res?.data?.data)
             const _opt = res?.data?.data?.order_number
             setOtp(_opt)
+            _store.dispatch({
+                type: 'clearOrder',
+                payload: {}
+            })
 
         } catch (ex) {
             setError(true)
@@ -94,9 +98,9 @@ export default function Confirmation(props) {
 
 
     const checkDataAndRedirect = () => {
-        console.log("confirm", isAnyValueEmpty(inputs))
+        // console.log("confirm", isAnyValueEmpty(inputs))
         // console.log(inputs)
-        if (isAnyValueEmpty(storeInputs)) {
+        if (isAnyValueEmpty(storeInputs, ["info"])) {
             navigate('/reservation')
         }
     }

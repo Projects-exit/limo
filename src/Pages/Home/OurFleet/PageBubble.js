@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { motion } from "framer-motion";
-import { _carsList } from "../../_carsList";
+// import { _carsList } from "../../_carsList";
+
+import { Store } from 'Store/orderStore'
 
 export const PageBubble = ({ page, imageIndex }) => {
 
-    // const Bubble = () =>
-    // { console.log(imageIndex(page)); }
+    const _store = useContext(Store)
+    let _carsList = _store?.state?._carsList
 
     return (<div>
         <div className=" ">

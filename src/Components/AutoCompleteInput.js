@@ -49,7 +49,9 @@ const Component = (props) => (
               option: (provided, state) => ({
                 ...provided,
                 color: 'white',
-                borderRadius : '30px',
+                borderRadius : '10px',
+                // fontWeight : 'bold',
+                fontFamily : 'sans-serif',
                 backgroundColor: state.isSelected ? '#B9884F' : 'transparent',
                 '&:hover' : {
                     backgroundColor : '#B9884F',
@@ -83,10 +85,13 @@ const Component = (props) => (
                 ...provided,
                 display : 'none'
               }),
-            //   noOptionsMessage: (provided) => ({
-            //     ...provided,
-            //     display : 'none'
-            //   }),
+              noOptionsMessage: (provided) => ({
+                ...provided,
+                // display : 'none',
+                color : 'white',
+                fontFamily : 'sans-serif',
+                fontWeight : 'bold'
+              }),
             },
           }}
 

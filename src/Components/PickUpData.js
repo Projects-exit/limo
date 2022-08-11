@@ -169,9 +169,9 @@ const DateTimeInput = (props) => {
                     className="w-full text-center h-full flex justify-center items-center">
                     {inputTime ? inputTime : "Pick a time"}
                 </div>
-                {openTime && <div className='absolute top-16 bg-grey w-full h-32  z-30 rounded-3xl border-copper border  overflow-hidden'>
+                {openTime && <div className='absolute top-16 bg-grey w-full h-32  z-30 rounded-3xl border-copper border font-sans  overflow-hidden '>
                     <Outsideclick onOutsideClick={() => setOpenTime(false)}>
-                        <div className="h-32 overflow-y-scroll special-scrollbar text-center">
+                        <div className="h-32 overflow-y-scroll special-scrollbar text-center font-bold ">
                             <GenerateTime />
                         </div>
                     </Outsideclick>

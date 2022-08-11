@@ -42,7 +42,7 @@ export default function Reservation(props) {
     const [error, setError] = useState({})
 
     const Schema = Yup.object({
-        info: Yup.string().required("Additional info  is a required field"),
+        // info: Yup.string().required("Additional info  is a required field"),
         phone: Yup.string().required("Phone is a required field"),
         name: Yup.string().required("Name is a required field"),
         email: Yup.string().required("Email is a required field").email("Invalid email"),
@@ -165,15 +165,16 @@ export default function Reservation(props) {
                                     inputs={inputs}
                                     handleChange={handleChange}
                                     className="w-full py-2" />
-                                    <div className="text-xs text-red-500 pt-2 text-center">
-                                        {error?.message}
-                                    </div>
+                                    
                                </div>
                                <div>
                                    <AddressData
                                     inputs={inputs}
                                     handleChange={handleChange}
                                     />
+                                        <div className="text-xs text-red-500 pt-2 text-center">
+                                            {error?.message}
+                                        </div>
                                    <div className="pt-4">
                                         {/* <button class="css style" type="button" id="SS_ProductCheckout" data-id="1" data-url="http://localhost:1337"> Buy Now </button> */}
                                        <ButtonFilled 
