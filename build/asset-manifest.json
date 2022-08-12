@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.e164dab3.css",
-    "main.js": "/static/js/main.89bf58da.js",
+    "main.css": "/static/css/main.30daf1f7.css",
+    "main.js": "/static/js/main.a0fde38f.js",
     "static/js/787.6a578b61.chunk.js": "/static/js/787.6a578b61.chunk.js",
     "static/media/driver.png": "/static/media/driver.a9a88bca9b371a003fc0.png",
     "static/media/Ellipse.png": "/static/media/Ellipse.646cd39deb1ce6a7d645.png",
@@ -16,13 +16,7 @@
     "static/media/LasVegas.png": "/static/media/LasVegas.5959a7c41ba18f485d23.png",
     "static/media/PalmSprings.png": "/static/media/PalmSprings.f333837242299d675c44.png",
     "static/media/orange.png": "/static/media/orange.b8944b3b9201b5543199.png",
-    "static/media/XTS2.png": "/static/media/XTS2.343a43106846aa9d1aeb.png",
     "static/media/sanFrancisco.png": "/static/media/sanFrancisco.db50bb5ca729abb91aa6.png",
-    "static/media/Suburban 1.png": "/static/media/Suburban 1.00163cada5fbeba44fa8.png",
-    "static/media/mercedes1.png": "/static/media/mercedes1.3adbc52a7647861b5419.png",
-    "static/media/BMW 1.png": "/static/media/BMW 1.8c23e9b8b2db4ac77acf.png",
-    "static/media/Escalade1.png": "/static/media/Escalade1.ccf23dc91afb1d788284.png",
-    "static/media/RR 1.png": "/static/media/RR 1.8eae22b2e01c649573be.png",
     "static/media/tyre.svg": "/static/media/tyre.b65207d260a9c3494ab795fab77649c9.svg",
     "static/media/Logo.svg": "/static/media/Logo.fd195f366b6ad4397531d40cde155c56.svg",
     "static/media/Logo2.svg": "/static/media/Logo2.4682e4662fd1903da6ab5770a61d6e14.svg",
@@ -35,12 +29,12 @@
     "static/media/Menu.svg": "/static/media/Menu.108f6cb9bbc96b1b44fcdde9d23d4855.svg",
     "static/media/scroll2.svg": "/static/media/scroll2.7705d057ff781642fbde3a86210978d6.svg",
     "static/media/tShape.svg": "/static/media/tShape.e53a270304011cb90c6fb6486aea83e8.svg",
-    "main.e164dab3.css.map": "/static/css/main.e164dab3.css.map",
-    "main.89bf58da.js.map": "/static/js/main.89bf58da.js.map",
+    "main.30daf1f7.css.map": "/static/css/main.30daf1f7.css.map",
+    "main.a0fde38f.js.map": "/static/js/main.a0fde38f.js.map",
     "787.6a578b61.chunk.js.map": "/static/js/787.6a578b61.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e164dab3.css",
-    "static/js/main.89bf58da.js"
+    "static/css/main.30daf1f7.css",
+    "static/js/main.a0fde38f.js"
   ]
 }

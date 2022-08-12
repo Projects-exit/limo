@@ -50,6 +50,7 @@ const Component = (props) => (
                 ...provided,
                 color: 'white',
                 borderRadius : '10px',
+                cursor : 'pointer',
                 // fontWeight : 'bold',
                 fontFamily : 'sans-serif',
                 backgroundColor: state.isSelected ? '#B9884F' : 'transparent',

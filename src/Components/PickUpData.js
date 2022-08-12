@@ -18,9 +18,12 @@ export const PickUpData = (props) => {
 
     const [value, setValue] = useState(null);
 
-    return (<>
-            <form autocomplete="off">
-        <div className="flex  flex-wrap w-full text-sm">
+    return (
+        <>
+        <form autocomplete="off" className="flex  flex-wrap w-full text-sm ">
+
+
+            {/* <div className="flex  flex-wrap w-full text-sm "> */}
 
                 <AutoCompleteInput
                     className={`${className ? className : 'w-full lg:w-1/3 my-2 lg:my-0  px-3'} `}
@@ -51,9 +54,10 @@ export const PickUpData = (props) => {
                 value={inputs?.time}
                 handleChange={(e) => handleChange({ "time": e.target.value })} /> */}
                 {/* <ButtonFilled label="Reserve now" className="mr-0 ml-auto grow text-center" /> */}
-        </div>
-            </form>
+            {/* </div> */}
 
+
+        </form>
     </>
     );
 };
@@ -146,7 +150,7 @@ const DateTimeInput = (props) => {
                 </div>
                 <style>{css}</style>
 
-                {open && <div className='absolute top-16 left-0 bg-grey w-fit z-20 rounded-3xl border-copper border'>
+                {open && <div className='fixed sm:absolute top-[100px]  sm:top-16 left-[0px] sm:left-0 bg-grey w-fit z-20 rounded-3xl border-copper border'>
                     <Outsideclick
                         onOutsideClick={() => setOpen(false)}
                     >

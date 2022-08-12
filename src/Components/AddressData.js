@@ -26,7 +26,7 @@ export const AddressData = (props) => {
                 handleChange={(e) => handleChange({ "phone": e.target.value })} />
             <div className={`${className ? className : 'w-full   py-2'} `}>
                 <textarea
-                    className={`w-full py-2 h-24 border-copper border w-full bg-transparent rounded-3xl text-white px-5 py-2`}
+                    className={`w-full py-2 h-24 border-copper border w-full bg-transparent rounded-3xl text-white px-5 py-2 placeholder-white`}
                     value={inputs?.info}
                     placeholder="Additional"
                     onChange={(e) => handleChange({ "info": e.target.value })} />

@@ -41,9 +41,11 @@ export default function Reservation(props) {
 
     const [error, setError] = useState({})
 
+    var phoneRegEx =  /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
+
     const Schema = Yup.object({
         // info: Yup.string().required("Additional info  is a required field"),
-        phone: Yup.string().required("Phone is a required field"),
+        phone: Yup.string().matches(phoneRegEx, "Invalid phone").required("Phone is a required field"),
         name: Yup.string().required("Name is a required field"),
         email: Yup.string().required("Email is a required field").email("Invalid email"),
         time: Yup.string().required("Time is a required field"),
@@ -151,12 +153,12 @@ export default function Reservation(props) {
                                    <div className="pt-4">
                                         <img src={storeInputs?.car?.image} alt="" />
                                    </div>
-                                   <div className="pt-4 flex justify-between">
+                                   <div className="pt-4 flex justify-center sm:justify-between flex-wrap sm:flex-nowrap">
                                        <CarDetail 
                                             seat={storeInputs?.car?.seat} 
                                             luggage={storeInputs?.car?.luggage} />
                                        <Link to="/fleet/pick">
-                                            <Button  label={<>Change&nbsp;Car</>} className="text-copper cursor-pointer text-sm"/>
+                                            <Button  label={<>Change&nbsp;Car</>} className="text-copper cursor-pointer text-sm mt-4 sm:mt-0"/>
                                        </Link>
                                    </div>
                                </div>
@@ -172,7 +174,7 @@ export default function Reservation(props) {
                                     inputs={inputs}
                                     handleChange={handleChange}
                                     />
-                                        <div className="text-xs text-red-500 pt-2 text-center">
+                                        <div className="text-xs text-red-500 pt-2 text-center font-bold font-sans">
                                             {error?.message}
                                         </div>
                                    <div className="pt-4">
