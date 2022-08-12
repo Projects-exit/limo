@@ -26,7 +26,7 @@ const qs = require('qs');
 export default function PaymentDetails(props) {
 
     const _store = useContext(Store)
-    const storeInputs = _store?.state?.order
+    const _carsList = _store?.state?._carsList
 
     const [orderdata, setorderdata] = useState(false)
     const [loading, setLoading] = useState(false)
@@ -43,9 +43,12 @@ export default function PaymentDetails(props) {
         email: '',
         phone: '',
         info: '',
+        car : {},
+        payment_code : '',
         reservationId : ''
     })
 
+    const selectedCar = _carsList.find(item => item.id === inputs?.car?.id) || {}
 
 
     const { code } = useParams()
@@ -59,7 +62,7 @@ export default function PaymentDetails(props) {
             const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/reservation/getReservation`, {
                 code
             })
-            console.log(res?.data?.data)
+            // console.log(res?.data?.data)
             const temp =  res?.data?.data
             const {
                 id : reservationId,
@@ -71,7 +74,9 @@ export default function PaymentDetails(props) {
                 email,
                 phone,
                 info,
-                strapi_stripe_product,
+                payment_code,
+                car,
+                // strapi_stripe_product,
                 quotePrice
             } = temp
             setInputs(prev => ({
@@ -84,11 +89,13 @@ export default function PaymentDetails(props) {
                 email,
                 phone,
                 info,
+                payment_code,
                 reservationId,
+                car,
                 quotePrice
                 
             }))
-            setorderdata(strapi_stripe_product)
+            // setorderdata(strapi_stripe_product)
 
 
         } catch (ex) {
@@ -102,14 +109,14 @@ export default function PaymentDetails(props) {
     const onBtnClick = () => {
         const query = qs.stringify({
             ...inputs,
-            strapiStripeId : orderdata?.id,
+            // strapiStripeId : orderdata?.id,
             payment_code : code
             
           }, {
             encodeValuesOnly: true,
           });
 
-        navigate(`${orderdata?.stripePriceId ? `/payment/${orderdata?.stripePriceId}/redirect?${query}` : '/payment/code'}`)
+        navigate(`${inputs?.payment_code ? `/payment/${inputs?.payment_code}/redirect?${query}` : '/payment/code'}`)
     }
 
 
@@ -186,19 +193,20 @@ export default function PaymentDetails(props) {
                                         <div className='flex flex-col h-full justify-between'>
                                             <div>
                                                 <div className="text-2xl text-white font-bold">
-                                                    {storeInputs?.car?.brand}
+                                                  {/* {console.log(selectedCar)} */}
+                                                    {selectedCar?.brand}
                                                 </div>
                                                 <div className="text-xl font-bold text-copper pt-2">
-                                                    {storeInputs?.car?.model}
+                                                    {selectedCar?.model}
                                                 </div>
                                             </div>
                                             <div className="pt-4 max-w-sm">
-                                                <img src={storeInputs?.car?.image} alt="" />
+                                                <img src={selectedCar?.image} alt="" />
                                             </div>
                                             <div className="py-4 flex justify-between">
                                                 <CarDetail
-                                                    seat={storeInputs?.car?.seat}
-                                                    luggage={storeInputs?.car?.luggage} />
+                                                    seat={selectedCar?.seat}
+                                                    luggage={selectedCar?.luggage} />
                                                 {/* <Link to="/fleet">
                                             <Button  label={<>Change&nbsp;Car</>} className="text-copper cursor-pointer text-sm"/>
                                        </Link> */}

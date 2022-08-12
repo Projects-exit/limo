@@ -25,15 +25,15 @@ export const DisplayDetails = ({ inputs }) => {
                 </div>
                 <div className='flex flex-wrap sm:flex-nowrap text-white py-2'>
                     <div className='w-full sm:w-24 font-bold  text-copper text-left sm:text-right'> Name :</div>
-                    <div className='grow sm:pl-3'> {inputs?.name} </div>
+                    <div className='grow sm:pl-3 max-w-[280px]'> {inputs?.name} </div>
                 </div>
                 <div className='flex flex-wrap sm:flex-nowrap text-white py-2'>
                     <div className='w-full sm:w-24 font-bold  text-copper text-left sm:text-right'> Pick-up :</div>
-                    <div className='grow sm:pl-3'> {inputs?.from?.label} </div>
+                    <div className='grow sm:pl-3 max-w-[280px]'> {inputs?.from?.label} </div>
                 </div>
                 <div className='flex flex-wrap sm:flex-nowrap text-white py-2'>
                     <div className='w-full sm:w-24 font-bold  text-copper text-left sm:text-right'> Destination :</div>
-                    <div className='grow sm:pl-3'> {inputs?.to?.label} </div>
+                    <div className='grow sm:pl-3 max-w-[280px]'> {inputs?.to?.label} </div>
                 </div>
                 <div className='flex flex-wrap sm:flex-nowrap text-white py-2'>
                     <div className='w-full sm:w-24 font-bold  text-copper text-left sm:text-right'> date :</div>

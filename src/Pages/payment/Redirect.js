@@ -12,7 +12,7 @@ import { Button, ButtonFilled } from 'Components/Button'
 
 export default function Redirect(props) {
 
-    const { priceId } = useParams()
+    // const { priceId } = useParams()
 
     const [searchParams, setSearchParams] = useSearchParams()
 
@@ -37,7 +37,7 @@ export default function Redirect(props) {
             // console.log(from)
 
             const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/reservation/createCheckOut`, {
-                priceId: priceId,
+                // priceId: priceId,
                 metadata
             })
 
