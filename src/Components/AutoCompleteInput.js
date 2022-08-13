@@ -7,12 +7,17 @@ const Component = (props) => (
         apiKey='AIzaSyD8XcAYYugR3OfE4FPnomAIGEJJJQb8kzI'
         autocompletionRequest={{
             // bounds: [
-            //   { lat: 50, lng: 50 },
-            //   { lat: 100, lng: 100 }
+            //   { lat: 38.512604, lng: -123.160688 },
+            //   { lat: 32.761565, lng: -114.277261 }
+            //   // { lat: 50, lng: 50 },
+            //   // { lat: 100, lng: 100 }
             // ],
-            componentRestrictions: {
-            country: ['us'],
-            }
+            location : {
+              lat:  36.757400, lng: -119.777406
+            },
+            radius: 650000,
+            // types: ['address'],
+            componentRestrictions: { country: ['us'],}
           }}
           selectProps={{
             value : props?.value,
