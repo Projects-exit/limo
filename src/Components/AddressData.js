@@ -1,7 +1,6 @@
 import React from 'react';
 import { InputText } from 'Components/InputText';
-
-
+import { PhoneText } from 'Components/phoneText';
 
 export const AddressData = (props) => {
 
@@ -17,16 +16,16 @@ export const AddressData = (props) => {
             <InputText
                 className={`${className ? className : 'w-full   py-2'} `}
                 value={inputs?.email}
-                placeholder="Email"
+                placeholder="example@email.com"
                 handleChange={(e) => handleChange({ "email": e.target.value })} />
-            <InputText
+            <PhoneText
                 className={`${className ? className : 'w-full   py-2'} `}
                 value={inputs?.phone}
-                placeholder="Phone number"
-                handleChange={(e) => handleChange({ "phone": e.target.value })} />
+                placeholder="+1 (541) 754-3010"
+                handleChange={(e) => handleChange({ "phone": e })} />
             <div className={`${className ? className : 'w-full   py-2'} `}>
                 <textarea
-                    className={`w-full py-2 h-24 border-copper border w-full bg-transparent rounded-3xl text-white px-5 py-2 placeholder-white`}
+                    className={`w-full py-2 h-24 border-copper border w-full bg-transparent rounded-3xl text-white px-5 py-2 placeholder-grey`}
                     value={inputs?.info}
                     placeholder="Additional"
                     onChange={(e) => handleChange({ "info": e.target.value })} />

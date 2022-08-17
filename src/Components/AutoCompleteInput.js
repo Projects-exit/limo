@@ -4,7 +4,8 @@ import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 const Component = (props) => (
   <div className={props.className}>
     <GooglePlacesAutocomplete
-        apiKey='AIzaSyD8XcAYYugR3OfE4FPnomAIGEJJJQb8kzI'
+        // apiKey='AIzaSyD8XcAYYugR3OfE4FPnomAIGEJJJQb8kzI'
+        // language="rus"
         autocompletionRequest={{
             // bounds: [
             //   { lat: 38.512604, lng: -123.160688 },
@@ -99,10 +100,11 @@ const Component = (props) => (
                 fontWeight : 'bold'
               }),
             },
-          }}
+        }}
 
      />
   </div>
 );
 
 export default Component;
+

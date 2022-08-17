@@ -224,7 +224,7 @@ export default function PaymentDetails(props) {
                                                {/* <Link to={`${orderdata?.stripePriceId ? `/payment/${orderdata?.stripePriceId}/redirect` : '/payment/code'}`}> */}
                                                 <ButtonFilled 
                                                     onClick={() => onBtnClick()}
-                                                    label="CHECK OUT" className="text-center w-full lg:w-fit lg:ml-auto text-sm" />
+                                                    label="PAY" className="text-center w-full lg:w-fit lg:ml-auto text-sm" />
                                                 {/* </Link> */}
                                             </div>
                                         </div>

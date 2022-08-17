@@ -41,11 +41,11 @@ export default function Reservation(props) {
 
     const [error, setError] = useState({})
 
-    var phoneRegEx =  /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
+    var phoneRegEx =  /^\(?(\d{3})\)?[ ]?(\d{3})[- ]?(\d{4})$/;
 
     const Schema = Yup.object({
         // info: Yup.string().required("Additional info  is a required field"),
-        phone: Yup.string().matches(phoneRegEx, "Invalid phone").required("Phone is a required field"),
+        phone: Yup.string().required("Phone is a required field").min(7,'Invalid phone number'),
         name: Yup.string().required("Name is a required field"),
         email: Yup.string().required("Email is a required field").email("Invalid email"),
         time: Yup.string().required("Time is a required field"),
@@ -57,7 +57,7 @@ export default function Reservation(props) {
 
 
     const handleChange = (val) => {
-        
+        console.log(val)
         setInputs(prev => ({
             ...prev,
             ...val

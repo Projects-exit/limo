@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import { ButtonFilled } from 'Components/Button';
 
@@ -16,6 +16,8 @@ export default function Fail(props) {
 
     const [loading, setloading] = useState(true)
     const [retry, setRetry] = useState('')
+    const navigation = useNavigate();
+    const [paymentCode, setPaymentCode] = useState('')
 
     const getCheckOutStatus = async () => {
         setloading(true)
@@ -26,7 +28,9 @@ export default function Fail(props) {
                 sessionId: checkoutSessionId
             })
             const url = res?.data?.data?.url
+            const payment_code = res?.data?.data?.metadata?.payment_code || ''
             setRetry(url)
+            setPaymentCode(payment_code)
             console.log(url)
 
         } catch (ex) {
@@ -63,13 +67,25 @@ export default function Fail(props) {
                                 </div>
 
                                 <div className="pt-12">
-                                    <ButtonFilled
-                                        onClick={() => {
-                                            if (retry) {
-                                                window.location.href = retry
-                                            }
-                                        }}
-                                        label="Retry" className="w-fit mx-auto" />
+                                    <div className="flex justify-center">
+
+                                        <ButtonFilled
+                                            onClick={() => {
+                                                if (retry) {
+                                                    window.location.href = retry
+                                                }
+                                            }}
+                                            label="Retry" className="w-fit" />
+
+                                    </div>
+                                    <div>
+
+                                        <div 
+                                            onClick={() => navigation(`/payment/details/${paymentCode}`)}
+                                            className="text-copper w-fit mx-auto mt-4 cursor-pointer p-4">
+                                            Back
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </CardGrey>
