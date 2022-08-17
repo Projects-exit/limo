@@ -1,7 +1,10 @@
 body {
   font-family: 'Playfair Display', serif;
   background-color: black;
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+
 }
+
 
 .text-grey-l {
   color: #343434;
@@ -269,3 +272,11 @@ body {
 .react-tel-input .country-list .country .dial-code{
   color:#bfbdbd !important;
 }
+
+/* ============================ */
+/* swiper */
+
+.swiper-slide {
+  width: auto;
+}
+/* ============================ */

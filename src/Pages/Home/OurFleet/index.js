@@ -9,7 +9,7 @@ export default function OurFleet(props) {
 
     return (
         <>
-            <div className="bg-black py-24  pt-44">
+            <div className="bg-black   pt-44">
                 <div className="relative hidden sm:block">
                         <SlideRight>
                             <div className="h-[0.5px] w-56 bg-copper absolute  top-24"></div>

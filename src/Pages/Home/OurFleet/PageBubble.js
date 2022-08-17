@@ -16,7 +16,7 @@ export const PageBubble = ({ page, imageIndex }) => {
 
                     {_carsList.map((item, index) => (<>
                         <motion.div className='h-2 w-2 bg-copper rounded-full mx-3' layoutId={`car_bubble_${item?.id}`} key={item?.id}></motion.div>
-                        {(index) === imageIndex(page) &&
+                        {(index) === imageIndex &&
                             <motion.div className='w-20 bg-copper h-[0.5px]' layoutId='pagenate1'></motion.div>}
                     </>)
                     )}
