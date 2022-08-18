@@ -22,7 +22,7 @@ export default function Footer(props) {
             label: "starworldlimo@gmail.com"
         },
         {
-            label: "818-929-5353"
+            label: <a href="tel:818-929-5353" >818-929-5353</a>
         },
     ]
 

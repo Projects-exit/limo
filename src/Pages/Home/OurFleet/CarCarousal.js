@@ -1,12 +1,13 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
 import { SlideTop, SlideBottom, SlideLeft, SlideRight } from 'Components/SlideAnimation'
 
 
 import Swiper from 'react-id-swiper';
-import SwiperCore, { Autoplay } from 'swiper';
-import 'swiper/css';
+import SwiperCore, { Autoplay, Navigation } from 'swiper';
+import 'swiper/css/bundle';
+// import 'swiper/css/navigation';
 // import 'swiper/swiper.scss';
 
 // import { _carsList, variants, swipePower, swipeConfidenceThreshold } from './OurFleet';
@@ -24,35 +25,6 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { Store } from 'Store/orderStore'
 
-// export const variants = {
-//     enter: (direction) => {
-//         return {
-//             x: direction > 0 ? 1000 : -1000,
-//             opacity: 0
-//         };
-//     },
-//     center: {
-//         zIndex: 1,
-//         x: 0,
-//         opacity: 1
-//     },
-//     exit: (direction) => {
-//         return {
-//             zIndex: 0,
-//             x: direction < 0 ? 1000 : -1000,
-//             opacity: 0
-//         };
-//     }
-// };
-
- 
-
-// export const swipeConfidenceThreshold = 10000;
-
-// export const swipePower = (offset, velocity) => {
-//     return Math.abs(offset) * velocity;
-// };
-
 
 
 export const CarCarousal = (prosp) => {
@@ -64,48 +36,50 @@ export const CarCarousal = (prosp) => {
     const navigate = useNavigate()
     
 
-    //  _carsList = _carsList.sort((a, b) => a.id - b.id)
+    const swiperRef = useRef(null);
 
-    // console.log(_carsList)
+    SwiperCore.use([Autoplay, Navigation]);
 
+    
+    const goNext = () => {
+        if (swiperRef.current && swiperRef.current.swiper) {
+          swiperRef.current.swiper.slideNext();
+        }
+      };
 
-    // const [[page, direction], setPage] = useState([0, 0]);
-    // const imageIndex = (page) => wrap(0, _carsList.length, page);
+    const goPrev = () => {
+        if (swiperRef.current && swiperRef.current.swiper) {
+            swiperRef.current.swiper.slidePrev();
+        }
+    };
 
+    const RenderCars = (carData, index) => {
 
+        const navigateSlide = () => {
+            console.log(index)
+            goPrev()
+            // if(index === imageIndex){
+            //     return
+            // }
+            // if((index < imageIndex || index === 1)) {
+            //     goPrev()
+            // } else if(index > imageIndex || index === (_carsList.length)){
+            //     goNext()
+            // }
+        }
 
-    // const paginate = (newDirection) => {
-    //     setPage([page + newDirection, newDirection]);
-    // };
-
-    SwiperCore.use([Autoplay]);
-
-
-    const updateCar = () => {
-
-        _store.dispatch({
-            type: 'initOrder',
-            payload: { car: _carsList[imageIndex] }
-        })
-
-        navigate("/reservation")
+        return (<div key={carData.id} 
+             className='max-w-xl relative'>
+                <div  className="w-full h-full absolute"></div>
+            <img   
+                className={`mx-auto ${index === imageIndex && ''}  max-w-[450px]  sm:max-w-[550px]`}
+                src={carData?.image} />
+        </div>)
     }
 
-    // const [seconds, setSeconds] = useState(0);
+    
 
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //         setSeconds(seconds => seconds - 1);
-    //     }, 3000);
-    //     return () => clearInterval(interval);
-    // }, []);
-
-    // useEffect(() => {
-    //     // console.log("seconds") 
-    //     // paginate(1)
-    //     setPage([seconds - 1, 1]);
-    // }, [seconds])
-
+   
     const _newSwipeList = [..._carsList]
 
     const params = {
@@ -115,31 +89,33 @@ export const CarCarousal = (prosp) => {
         loop: true,
         observer:true,
         spaceBetween: 80,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true
-          },
-          navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
-          },
         on: { 
         realIndexChange: (swiper) => setImageIndex(swiper.realIndex) 
         } ,
         autoplay: {
             delay: 2500,
             disableOnInteraction: false
-          },
+        },
+        breakpoints: {
+            550 : {
+                
+            }
+        }
+        
       }
-      const RenderCars = (carData, index) => {
-        return (<div key={carData.id} className='max-w-xl'>
-        <img 
-        className={`mx-auto ${index === imageIndex && 'scale-[1.2] w-fit'}`}
-        src={carData?.image} />
-        </div>)
-      }
-    
-      
+
+      const updateCar = () => {
+
+        _store.dispatch({
+            type: 'initOrder',
+            payload: { car: _carsList[imageIndex] }
+        })
+
+        navigate("/reservation")
+    }
+
+
+
   
 
     return (
@@ -168,32 +144,48 @@ export const CarCarousal = (prosp) => {
                     </SlideBottom>
                     </div>
                 </div>
-                <div className=''>
-                    <>
-                    {_newSwipeList?.length > 0 && (<>
-                    <Swiper {...params}>
-                        {
-                            _newSwipeList.map(RenderCars)
-                        }
-                        {/* <div style={{width :'100px'}} className="w-32 bg-red-300 h-16">hello</div>
-                        <div style={{width :'200px'}} className="w-32 bg-red-300 h-16">hello</div>
-                        <div style={{width :'300px'}} className="w-32 bg-red-300 h-16">hello</div> */}
-                      
-                    </Swiper>
-                    </>)}
-
-                    </>
+                <div className="relative">
+                    <div className="absolute w-full  flex justify-center -translate-y-[80px] sm:translate-y-[130px]">
+                            <div onClick={goPrev} className="flex-grow h-30"></div>
+                            <div onClick={goPrev} className="">
+                                <svg fill='white' className='w-[15px] sm:w-[24px]' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" /></svg>
+                            </div>
+                            <div className="w-[250px] sm:w-[620px] h-[0.1px]"></div>
+                            <div onClick={goNext}>
+                                <svg fill='white' className='w-[15px] sm:w-[24px]' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z" /></svg>
+                            </div>
+                            <div  onClick={goNext} className="flex-grow h-30"></div>
+                        </div>
+                </div>
+                <div className='w-full overflow-hidden relative'>
+                    
+                    <div onClick={goPrev} className="absolute z-30 h-[300px] left-0 w-[10px] sm:w-[100px] md:w-[200px]"></div>
+                    <div onClick={goNext} className="absolute z-30 h-[300px] right-0 w-[10px] sm:w-[100px] md:w-[200px]"></div>
+                    <div className=''>
+                        {_newSwipeList?.length > 0 && (<>
+                        <Swiper {...params} ref={swiperRef}>
+                            {
+                                _newSwipeList.map(RenderCars)
+                            }
+                            {/* <div style={{width :'100px'}} className="w-32 bg-red-300 h-16">hello</div>
+                            <div style={{width :'200px'}} className="w-32 bg-red-300 h-16">hello</div>
+                            <div style={{width :'300px'}} className="w-32 bg-red-300 h-16">hello</div> */}
+                        
+                        </Swiper>
+                        </>)}
+                    </div>
+                    
                 </div>
                 
                 <PageBubble  imageIndex={imageIndex}  />
-                {/* <div className="flex justify-center mt-12 items-center text-2xl">
+                <div className="flex justify-center mt-12 items-center text-2xl">
                     <SlideLeft>
                     <div className='mx-4 flex items-center'>
                         <div className="bg-grey rounded-full h-9 w-9 flex items-center justify-center">
                             <PersonIcon height={15} width={15} />
                         </div>
                         <div className="text-white ml-3 font-bold">
-                            {_carsList[imageIndex(page)]?.seat}
+                            {_carsList[imageIndex]?.seat}
                         </div>
                     </div>
                     </SlideLeft>
@@ -203,7 +195,7 @@ export const CarCarousal = (prosp) => {
                             <BagIcon height={23} width={23} />
                         </div>
                         <div className="text-white ml-3 font-bold">
-                            {_carsList[imageIndex(page)]?.luggage}
+                            {_carsList[imageIndex]?.luggage}
                         </div>
                     </div>
                     </SlideRight>
@@ -214,7 +206,7 @@ export const CarCarousal = (prosp) => {
                  
                         <ButtonFilled onClick={updateCar}  label="RESERVE NOW" className="w-fit mx-auto text-sm" />
                     </SlideTop>
-                </div> */}
+                </div>
             </div>
         </>
     );

@@ -32,7 +32,7 @@ export default function Index(props) {
                             </Link>
                         </div>
                         <div className="text-copper mx-5">
-                            818-929-5353
+                        <a href="tel:818-929-5353">  818-929-5353 </a>
                         </div>
                         <Link to="/payment/code">
                         <ButtonFilled label="PAYMENT" className="text-xs" />

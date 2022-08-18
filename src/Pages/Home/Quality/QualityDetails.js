@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { wrap } from "popmotion";
 import { motion, AnimatePresence } from "framer-motion";
+import { SlideTop, } from 'Components/SlideAnimation'
 
 
 import { _qualityList } from './_qualityList';
@@ -54,8 +55,11 @@ export const QualityDetails = (props) => {
             <PageBubble qualityIndex={active} />
         </div>
         <div className='flex flex-col justify-between h-full'>
-        <div className=''>
-                <AnimatePresence exitBeforeEnter>
+            <div className='text-[#838383]'>
+                <SlideTop>
+                    Attending a private party? Headed to the Grammys or a film premiere? We’re here to help you arrive in style. At Star World Limo, we’re dedicated to making your ride smooth and comfortable while staying within your budget. We will get you there on time as you enjoy the exceptional quality and luxury of our service.
+                </SlideTop>
+                {/* <AnimatePresence exitBeforeEnter>
                     <motion.div
                         key={active ? active.title : "empty"}
                         animate={{ opacity: 1, y: 0 }}
@@ -66,9 +70,9 @@ export const QualityDetails = (props) => {
                     >
                         {active ? active.description : null}
                     </motion.div>
-                </AnimatePresence>
+                </AnimatePresence> */}
             </div>
-            <div className="flex w-full overflow-scroll no-scrollbar scroll-smooth pt-12">
+            <div className="flex w-full overflow-scroll no-scrollbar scroll-smooth pt-12 justify-between max-w-[600px]">
                 {_qualityList.map((item, index) => (<div
                     key={item?.title}
                     className={`pr-6  cursor-pointer ${active?.title === item?.title ? 'text-white' : 'text-[#838383]'}`}

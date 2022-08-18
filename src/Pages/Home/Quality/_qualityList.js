@@ -21,7 +21,7 @@ export const _qualityList = [
         image : Quality_3
     },
     {
-        title: "Chauffeur\u00a0services",
+        title: "Business\u00a0meeting",
         description: "Attending a private party? Headed to the Grammys or a film premiere? We’re here to help you arrive in style. At Star World Limo, we’re dedicated to making your ride smooth and comfortable while staying within your budget. We will get you there on time as you enjoy the exceptional quality and luxury of our service.",
         image : Quality_4
     },
