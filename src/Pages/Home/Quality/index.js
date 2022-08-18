@@ -32,7 +32,7 @@ export default function Quality(props) {
                                                 Some of our keys
                                             </SlideLeft>
                                         </div> */}
-                                        <div className="text-3xl text-white font-bold pb-12">
+                                        <div className="text-2xl sm:text-3xl text-white font-bold pb-12">
                                             <SlideLeft>
                                                 Attending events
                                             </SlideLeft>

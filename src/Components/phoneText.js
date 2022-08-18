@@ -19,6 +19,12 @@ export const PhoneText = (props) => {
       
         
     // }
+    const customFocus = (value, country, e, formattedValue) => {
+        // console.log(country)
+        if(!country?.format) {
+            handleChange("+1", {format: "+. (...) ...-...."}, {}, "+1")
+        }
+    }
 
     return (
         <div className={className}>
@@ -30,11 +36,14 @@ export const PhoneText = (props) => {
                 placeholder={placeholder}
                 /> */}
                 <PhoneInput
-                country={'us'}
+                country={''}
                 preferredCountries={["us"]}
+                countryCodeEditable={true}
+                // enableSearch={true}
                 // disableCountryCode={true}
                 value={value}
-                onChange={e => handleChange(e)}
+                onFocus={(value, country, e, formattedValue) => customFocus(value, country, e, formattedValue)}
+                onChange={(val,country, e, formattedValue) => handleChange(val,country, e, formattedValue)}
                 placeholder={placeholder}
                 inputClass={"h-12 bg-red-300 text-black w-full"}
                 searchClass={""}

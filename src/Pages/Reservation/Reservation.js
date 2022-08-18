@@ -36,16 +36,18 @@ export default function Reservation(props) {
         name : '',
         email : '',
         phone : '',
-        info : ''
+        info : '',
+        unformatedPhone : '',
+        phoneFormat : ''
     })
 
     const [error, setError] = useState({})
 
-    var phoneRegEx =  /^\(?(\d{3})\)?[ ]?(\d{3})[- ]?(\d{4})$/;
+    // var phoneRegEx =  /^\(?(\d{3})\)?[ ]?(\d{3})[- ]?(\d{4})$/;
 
     const Schema = Yup.object({
         // info: Yup.string().required("Additional info  is a required field"),
-        phone: Yup.string().required("Phone is a required field").min(7,'Invalid phone number'),
+        phone: Yup.string().required("Phone is a required field"),
         name: Yup.string().required("Name is a required field"),
         email: Yup.string().required("Email is a required field").email("Invalid email"),
         time: Yup.string().required("Time is a required field"),
@@ -87,6 +89,12 @@ export default function Reservation(props) {
         try {
             const _inputs = {...inputs, from : inputs?.from?.label, to : inputs?.to?.label}
             await Schema.validate(_inputs)
+            if(inputs?.phoneFormat?.split(".").length-1 !== inputs?.unformatedPhone?.length){
+                throw { 
+                    errors : "Invalid phone number"
+                }
+            }
+            
             // console.log(_store)
             navigate(`/reservation/confirmation/${storeInputs?.car?.id}`)
         } catch(ex) {

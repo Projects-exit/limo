@@ -19,7 +19,7 @@ export default function Footer(props) {
     ]
     const _contacts = [
         {
-            label: "starworldlimo@gmail.com"
+            label: <a href="mailto:starworldlimo@gmail.com" >starworldlimo@gmail.com</a>
         },
         {
             label: <a href="tel:818-929-5353" >818-929-5353</a>

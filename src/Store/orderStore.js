@@ -11,7 +11,9 @@ const stateModal = {
         name : '',
         email : '',
         phone : '',
-        info : ''
+        info : '',
+        unformatedPhone : '',
+        phoneFormat : ''
     },
     _carsList : []
     

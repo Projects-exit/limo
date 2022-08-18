@@ -22,7 +22,11 @@ export const AddressData = (props) => {
                 className={`${className ? className : 'w-full   py-2'} `}
                 value={inputs?.phone}
                 placeholder="+1 (541) 754-3010"
-                handleChange={(e) => handleChange({ "phone": e })} />
+                handleChange={(val,country, e, formattedValue) => handleChange({
+                     "phone": formattedValue,   
+                     "unformatedPhone" : val,
+                    "phoneFormat" : country?.format|| ''
+                    },)} />
             <div className={`${className ? className : 'w-full   py-2'} `}>
                 <textarea
                     className={`w-full py-2 h-24 border-copper border w-full bg-transparent rounded-3xl text-white px-5 py-2 placeholder-grey`}

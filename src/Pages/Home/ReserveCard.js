@@ -49,7 +49,7 @@ export const ReserveCard = (props) => {
     return (
         <div className='relative z-20'>
             <div className="container mx-auto w-full  ">
-                <div className="text-center font-bold text-white text-3xl pb-16">
+                <div className="text-center font-bold text-white text-2xl sm:text-3xl pb-16">
                     <SlideBottom>
                         Reserve the car now
                     </SlideBottom>

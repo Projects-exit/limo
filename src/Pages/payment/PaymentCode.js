@@ -64,13 +64,13 @@ export default function Confirmation(props) {
                                     Validating...
                                 </div>
                             </div> :
-                                <CardGrey className="w-full lg:max-w-xl mx-auto" >
+                                <CardGrey className="w-full lg:max-w-xl mx-auto p-[4px] sm:p-8" >
                                         <div className="py-4 text-white font-bold text-center">
                                         Enter the Payment code  that <br/> we sent you.
                                         </div>
                                         <div className="py-4 w-fit mx-auto">
                                             <OtpInput
-                                                inputStyle={{width : '35px', height : '45px', borderRadius : '10px', margin : '5px', backgroundColor : 'transparent', color : 'white', border : '1px solid #B9884F'}}
+                                                inputStyle={{width : '33px', height : '45px', borderRadius : '10px', margin : '5px', backgroundColor : 'transparent', color : 'white', border : '1px solid #B9884F'}}
                                                 value={code}
                                                 onChange={(e) => setcode(e)}
                                                 numInputs={6}
