@@ -145,7 +145,7 @@ export const CarCarousal = (prosp) => {
                     </div>
                 </div>
                 <div className="relative">
-                    <div className="absolute w-full  flex justify-center -translate-y-[80px] sm:translate-y-[130px]">
+                    <div className="absolute z-30 w-full  flex justify-center -translate-y-[80px] sm:translate-y-[130px]">
                             <div onClick={goPrev} className="flex-grow h-30"></div>
                             <div onClick={goPrev} className="">
                                 <svg fill='white' className='w-[15px] sm:w-[24px]' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" /></svg>
