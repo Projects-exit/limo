@@ -21,9 +21,19 @@ export default function Quality(props) {
                             <div className="container  mx-auto  mt-12">
 
                             <div className="flex flex-wrap bg-grey">
-                                <div className="w-full lg:w-4/12 text-white">
-                                    <img src={activeGlobal?.image} className="w-full h-full" alt="" />
+                                {/* On desktop */}
+                                <div 
+                                    style={{
+                                        backgroundImage : `url(${activeGlobal?.image})`,
+                                        backgroundSize : 'cover'
+                                    }}
+                                    className="hidden lg:block w-full lg:w-4/12  text-white">
+                                    {/* <img src={activeGlobal?.image} className="w-full " alt="" /> */}
                                     {/* {activeGlobal?.title} */}
+                                </div>
+                                {/* on Mobile */}
+                                <div className="block lg:hidden w-full lg:w-4/12  text-white">
+                                    <img src={activeGlobal?.image} className="w-full h-full" alt="" />
                                 </div>
                                 <div className="w-full lg:w-8/12">
                                     <div className="p-[30px] text-left">
