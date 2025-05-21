@@ -18,7 +18,8 @@ export default function InitCars(props) {
             const carlist = list.filter(item => item.attributes.is_available === true).map(item => ({
                 id:item.id, 
                 ...item.attributes,
-                image : `${process.env.REACT_APP_BASE_URL}${item.attributes?.image?.data?.attributes?.url}`
+                // image : `${process.env.REACT_APP_BASE_URL}${item.attributes?.image?.data?.attributes?.url}`
+                image : `${item.attributes?.image?.data?.attributes?.url}`
                 
             }))
             // setCarList(list)

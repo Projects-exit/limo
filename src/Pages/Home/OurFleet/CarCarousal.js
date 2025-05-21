@@ -31,6 +31,7 @@ export const CarCarousal = (prosp) => {
 
     const _store = useContext(Store)
     let _carsList = _store?.state?._carsList
+
     
     const [imageIndex, setImageIndex] = useState(0)
     const navigate = useNavigate()
